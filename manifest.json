@@ -1,0 +1,26 @@
+{
+  "name": "Mystic Calendar",
+  "short_name": "Mystic Cal",
+  "description": "Dein mystischer Kalender mit Grimoire, Kristallkugel und Fantasy-Avataren. Entwickelt von GET IT.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#a855f7",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "lifestyle"],
+  "lang": "de"
+}
