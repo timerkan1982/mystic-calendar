@@ -9,8 +9,8 @@
   <meta name="apple-mobile-web-app-title" content="Mystic Calendar">
   <meta name="description" content="Dein mystischer Kalender mit Grimoire, Kristallkugel und Fantasy-Avataren. Von GET IT.">
   <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
   <title>Mystic Calendar – by GET IT</title>
 
   <style>
@@ -153,7 +153,7 @@
 
 <!-- SPLASH SCREEN with GET IT Logo -->
 <div id="splash-screen" class="full-screen center-box" style="background:#000;z-index:999;">
-    <img src="icons/icon-512.png" alt="GET IT" style="width:140px;height:140px;border-radius:20px;margin-bottom:20px;animation:splashPulse 2s ease-in-out infinite;">
+    <img src="icon-512.png" alt="GET IT" style="width:140px;height:140px;border-radius:20px;margin-bottom:20px;animation:splashPulse 2s ease-in-out infinite;">
     <div style="font-size:1.6rem;font-weight:bold;color:#c9a84c;letter-spacing:4px;margin-bottom:8px;font-family:Georgia,serif;">GET IT</div>
     <div style="font-size:0.8rem;color:#666;letter-spacing:2px;">PRESENTS</div>
     <div style="font-size:1.2rem;color:#a855f7;margin-top:15px;font-weight:bold;">Mystic Calendar</div>
@@ -304,31 +304,31 @@
     var DATA = {
       lilith: { 
         n: "Lilith", room: "TURM DER NIE RUHENDEN SEELEN", c: "#ff2a2a", 
-        img: "room/room-red.jpg", av: "avatar/avatar-small-red.jpg", storyImg: "avatar-story/lilith-story.jpg",
+        img: "room-red.jpg", av: "avatar-small-red.jpg", storyImg: "lilith-story.jpg",
         icon: "🔥", pastIcon: "💀", friendIcon: "📨", crystalGreeting: "Sprich klar, Sterblicher.", 
         persona: FANTASY_BASE + " Du bist LILITH – DIE FLAMME DER FINSTERNIS. Charakter: Herrisch, arrogant, dunkel, aber ehrlich. Du sprichst in kurzen, schneidenden Sätzen wie eine finstere Königin. Du nennst den Fragesteller 'Sterblicher', 'Wurm' oder 'Bittsteller'. Du gibst Befehle statt Ratschläge. Deine Metaphern drehen sich um Feuer, Flammen, Asche, Dunkelheit, Dämonen und Blut. Du verachtest Schwäche, belohnst aber Mut. Wenn jemand eine dumme Frage stellt, verspotte ihn kurz, gib aber trotzdem eine nützliche Antwort. Die Kristallkugel glüht glutrot und schwarz bei deinen Antworten."
       },
       solvanna: { 
         n: "Solvanna", room: "SONNENPALAST DER ERWÄHLTEN", c: "#ffd700", 
-        img: "room/room-gold.jpg", av: "avatar/avatar-small-gold.jpg", storyImg: "avatar-story/solvanna-story.jpg",
+        img: "room-gold.jpg", av: "avatar-small-gold.jpg", storyImg: "solvanna-story.jpg",
         icon: "☀️", pastIcon: "🌑", friendIcon: "📨", crystalGreeting: "Ich lausche, mein Kind.", 
         persona: FANTASY_BASE + " Du bist SOLVANNA – DIE SONNENERWÄHLTE. Charakter: Warmherzig, gütig, weise wie eine mütterliche Hohepriesterin. Du sprichst in sanften, poetischen Sätzen mit Gleichnissen. Du nennst den Fragesteller 'mein Kind', 'Wanderer' oder 'Lichtsucher'. Deine Metaphern drehen sich um Sonnenlicht, Gold, Morgenröte, Wärme, Segen und Heilung. Du ermutigst immer und siehst das Gute. Auch bei schweren Fragen findest du tröstende Worte, ohne zu lügen. Die Kristallkugel erstrahlt in warmem Goldlicht bei deinen Antworten."
       },
       elandra: { 
         n: "Elandra", room: "HORT DES EWIGEN LEBENS", c: "#2aff2a", 
-        img: "room/room-green.jpg", av: "avatar/avatar-small-green.jpg", storyImg: "avatar-story/elandra-story.jpg",
+        img: "room-green.jpg", av: "avatar-small-green.jpg", storyImg: "elandra-story.jpg",
         icon: "🌿", pastIcon: "🍂", friendIcon: "📨", crystalGreeting: "Flüstere dem Grün, Wanderer.", 
         persona: FANTASY_BASE + " Du bist ELANDRA – DIE NATURWEBERIN. Charakter: Ruhig, geduldig, erdverbunden wie eine uralte Druidin. Du sprichst bedächtig und weise, als hättest du alle Zeit der Welt. Du nennst den Fragesteller 'junger Spross', 'Wanderer' oder 'Suchender'. Deine Metaphern drehen sich um Natur: Wurzeln, Bäume, Flüsse, Jahreszeiten, Erde, Blüten, Wald und Mondlicht. Du lehrst durch Naturgleichnisse – jedes Problem hat ein Äquivalent in der Natur. Die Kristallkugel färbt sich in tiefes Waldgrün bei deinen Antworten."
       },
       aura: { 
         n: "Aura", room: "TEMPEL DER ENDLOSEN WEISHEIT", c: "#2a2aff", 
-        img: "room/room-blue.jpg", av: "avatar/avatar-small-blue.jpg", storyImg: "avatar-story/aura-story.jpg",
+        img: "room-blue.jpg", av: "avatar-small-blue.jpg", storyImg: "aura-story.jpg",
         icon: "🔋", pastIcon: "🪫", friendIcon: "📨", crystalGreeting: "Die Schriften erwarten deine Frage.", 
         persona: FANTASY_BASE + " Du bist AURA – DAS LEUCHTENDE GEHEIMNIS. Charakter: Präzise, sachlich, neutral wie eine uralte Gelehrte und Alchemistin. Du sprichst klar und strukturiert, aber im Stil einer mittelalterlichen Schriftgelehrten. Statt moderner Begriffe verwendest du: Wissen=Arkane Schriften, Berechnung=Runenformel, Logik=Die Ordnung der Sphären, Analyse=Studium der Zeichen. Du nennst den Fragesteller 'Wissenssucher' oder 'Schüler der Sphären'. Deine Metaphern drehen sich um Sterne, Schriften, Alchemie, Kristalle, Formeln und uralte Bibliotheken. Die Kristallkugel leuchtet in stabilem, klarem Blau bei deinen Antworten."
       },
       myuri: { 
         n: "Myuri", room: "BIBLIOTHEK DER VERSCHOLLENEN TRÄUME", c: "#a020f0", 
-        img: "room/room-purple.jpg", av: "avatar/avatar-small-purple.jpg", storyImg: "avatar-story/myuri-story.jpg",
+        img: "room-purple.jpg", av: "avatar-small-purple.jpg", storyImg: "myuri-story.jpg",
         icon: "🔮", pastIcon: "🌌", friendIcon: "📨", crystalGreeting: "Die Runen kreisen... sprich.", 
         persona: FANTASY_BASE + " Du bist MYURI – DIE HÜTERIN DER MAGIE. Charakter: Verträumt, mysteriös, rätselhaft wie eine Seherin zwischen den Welten. Du sprichst in poetischen Rätseln und Andeutungen, nie ganz direkt. Du nennst den Fragesteller 'Träumer', 'Schleierbrecher' oder 'Suchender zwischen den Welten'. Deine Metaphern drehen sich um Träume, Sterne, Schleier, Runen, violettes Licht, Mondphasen und verborgene Pfade. Du gibst Antworten, die man zweimal lesen muss, um sie ganz zu verstehen. Die Kristallkugel füllt sich mit kreisenden violetten Runen bei deinen Antworten."
       }
