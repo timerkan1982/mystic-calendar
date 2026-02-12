@@ -11,26 +11,26 @@
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-  <title>Mystic Calendar â€“ by GET IT</title>
+  <title>Mystischer Kalender – von GET IT</title>
 
   <style>
     :root { --bg: #000; --main: #a855f7; --text: #fff; --font: system-ui, sans-serif; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      background: var(--bg); color: var(--text); font-family: var(--font);
-      height: 100vh; overflow: hidden; display: flex; flex-direction: column;
+    Körper {
+      Hintergrund: var(--bg); Farbe: var(--text); Schriftfamilie: var(--font);
+      Höhe: 100vh; Überlauf: ausgeblendet; Anzeige: flex; Flexrichtung: spaltenweise;
     }
     .hidden { display: none !important; }
     @keyframes splashPulse { 0%,100%{transform:scale(1);opacity:0.8;} 50%{transform:scale(1.05);opacity:1;} }
     @keyframes splashFade { from{opacity:1;} to{opacity:0;pointer-events:none;} }
     .full-screen {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      Position: absolut; oben: 0; links: 0; Breite: 100%; Höhe: 100%;
       display: flex; flex-direction: column; z-index: 10; background: #000;
     }
     .center-box {
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      height: 100%; padding: 20px; text-align: center;
+      Höhe: 100 %; Innenabstand: 20px; Textausrichtung: zentriert;
     }
 
     /* STORY SCREEN */
@@ -38,14 +38,14 @@
     #story-img-display { width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
     .story-nav-btn {
         position: absolute; top: 20px; z-index: 50;
-        background: rgba(0, 0, 0, 0.6); color: #fff; border: 1px solid var(--main);
+        Hintergrund: rgba(0, 0, 0, 0.6); Farbe: #fff; Rahmen: 1px durchgezogen var(--main);
         padding: 8px 15px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
         border-radius: 5px; cursor: pointer; transition: 0.2s; width: auto !important; margin-top: 0 !important;
     }
     .btn-exit { left: 20px; border-color: #555; color: #ccc; }
     .btn-enter { right: 20px; border-color: var(--main); color: var(--main); font-weight: bold; }
 
-    /* LOGIN & AVATAR */
+    /* ANMELDEN & AVATAR */
     #login-screen h1 { color: var(--main); margin-bottom: 10px; font-size: 1.8rem; }
     #login-screen p { color: #ccc; margin-bottom: 20px; font-size: 0.95rem; max-width: 300px; line-height: 1.4; }
     .avatar-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px; }
@@ -70,14 +70,14 @@
     .z-orb { bottom: 18%; right: 5%; width: 38%; height: 35%; border-radius: 50%; }
     .z-book { bottom: 18%; left: 5%; width: 40%; height: 25%; }
 
-    /* UI STANDARD */
+    /* UI-STANDARD */
     .top-bar { position: absolute; top: 0; left: 0; width: 100%; padding: 10px; background: rgba(0, 0, 0, 0.7); display: flex; justify-content: space-between; z-index: 30; pointer-events: none; align-items: center; }
     .top-text { pointer-events: auto; font-size: 0.9rem; font-weight: bold; }
     .overlay-screen { background: #111; padding: 18px; border: 2px solid var(--main); box-shadow: 0 0 30px rgba(168, 85, 247, 0.4); margin: 10px; border-radius: 20px; display: flex; flex-direction: column; max-height: 90vh; width: 95%; max-width: 420px; position: relative; overflow-y: auto; }
     .overlay-title { font-size: 1.6rem; font-weight: bold; margin-bottom: 15px; margin-top: 8px; color: #fff; text-align: center; }
     .back-link { font-size: 0.9rem; font-weight: 600; color: #fff; cursor: pointer; text-align: left; margin-bottom: 4px; }
     
-    /* INPUTS & BUTTONS */
+    /* EINGÄNGE & TASTEN */
     .form-group { margin-bottom: 12px; text-align: left; width: 100%; }
     .form-label { font-weight: bold; font-size: 0.85rem; margin-bottom: 5px; color: #ddd; display: block; }
     input, textarea, select { padding: 12px; border: 1px solid var(--main); background: rgba(255, 255, 255, 0.05); color: #fff; border-radius: 10px; width: 100%; font-family: inherit; font-size: 1rem; outline: none; }
@@ -87,7 +87,7 @@
     button.secondary { border-color: #888; background: rgba(255, 255, 255, 0.04); color: #ddd; }
     .floating-add-btn { position: absolute; bottom: 20px; right: 20px; width: 50px; height: 50px; border-radius: 50%; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px var(--main); z-index: 100; margin: 0; }
 
-    /* LIZENZ & STATS */
+    /* LIZENZ & STATISTIKEN */
     .license-card { background: rgba(255,255,255,0.08); border: 1px solid var(--main); border-radius: 10px; padding: 15px; margin-bottom: 20px; text-align: left; }
     .license-header { font-size: 1.1rem; font-weight: bold; color: var(--main); margin-bottom: 5px; }
     .license-rank { font-size: 0.85rem; color: #ddd; margin-bottom: 10px; }
@@ -99,7 +99,7 @@
     .stat-val { font-weight: bold; font-size: 0.9rem; display: block; }
     .stat-label { font-size: 0.65rem; color: #aaa; }
 
-    /* LISTEN & ITEMS */
+    /* ANHÖREN & ARTIKEL */
     .scroll-list { overflow-y: auto; flex-grow: 1; margin-bottom: 10px; border-top: 1px solid #333; padding-top: 10px; }
     .list-item { background: rgba(255, 255, 255, 0.05); padding: 10px; margin-bottom: 8px; border-radius: 8px; border-left: 3px solid var(--main); display: flex; flex-direction: row; justify-content: space-between; align-items: center; gap: 10px; min-height: auto; }
     .list-item > div:first-child { flex: 1; min-width: 0; }
@@ -126,7 +126,7 @@
     .holiday-cell { background: rgba(168, 85, 247, 0.18); }
     .cal-footer-hint { margin-top: 14px; color: #aaa; font-size: 0.9rem; text-align: center; }
 
-    /* TIMELINE */
+    /* ZEITSTRAHL */
     .day-header { display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px; border-bottom:1px solid #333; padding-bottom:10px; }
     .day-date { font-size: 1.2rem; font-weight:bold; color:#fff; }
     .timeline { position: relative; border-left: 2px solid var(--main); margin-left: 10px; padding-left: 20px; padding-bottom: 60px; }
@@ -151,32 +151,31 @@
 </head>
 <body>
 
-<!-- SPLASH SCREEN with GET IT Logo -->
+<!-- SPRITZBILDSCHIRM mit GET IT Logo -->
 <div id="splash-screen" class="full-screen center-box" style="background:#000;z-index:999;">
-    <img src="icon-512.png" alt="GET IT" style="width:140px;height:140px;border-radius:20px;margin-bottom:20px;animation:splashPulse 2s ease-in-out infinite;">
-    <div style="font-size:1.6rem;font-weight:bold;color:#c9a84c;letter-spacing:4px;margin-bottom:8px;font-family:Georgia,serif;">GET IT</div>
-    <div style="font-size:0.8rem;color:#666;letter-spacing:2px;">PRESENTS</div>
-    <div style="font-size:1.2rem;color:#a855f7;margin-top:15px;font-weight:bold;">Mystic Calendar</div>
+    <img src="icon-512.png" alt="HOL ES DIR" style="width:140px;height:140px;border-radius:20px;margin-bottom:20px;animation:splashPulse 2s ease-in-out infinite;">
+    <div style="font-size:1.6rem;font-weight:bold;color:#c9a84c;letter-spacing:4px;margin-bottom:8px;font-family:Georgia,serif;">JETZT ANSEHEN</div>
+    <div style="font-size:0.8rem;color:#666;letter-spacing:2px;">PRÄSENTATIONEN</div>
+    <div style="font-size:1.2rem;color:#a855f7;margin-top:15px;font-weight:bold;">Mystischer Kalender</div>
 </div>
 
 <div id="login-screen" class="full-screen center-box hidden">
     <h1>Willkommen Reisender!</h1>
-    <p>Bitte registrieren Sie sich in Ihrer Gilde fÃ¼r Ihre Abenteuer Lizenz.</p>
+    <p>Bitte registrieren Sie sich in Ihrer Gilde für Ihre Abenteuer-Lizenz.</p>
     <div style="width:100%; max-width:280px;">
-        <input type="text" id="login-name" placeholder="Dein Name..." style="text-align:center; margin-bottom:15px;">
+        <input type="text" id="login-name" placeholder="Ihr Name..." style="text-align:center; margin-bottom:15px;">
         <button onclick="app.registerUser(); app.playSound('enter')">Beitreten</button>
     </div>
-    <div style="margin-top:30px;opacity:0.4;font-size:0.7rem;letter-spacing:1px;">DEVELOPED BY GET IT</div>
+    <div style="margin-top:30px;opacity:0.4;font-size:0.7rem;letter-spacing:1px;">ENTWICKELT VON GET IT</div>
 </div>
 
 <div id="avatar-screen" class="full-screen center-box hidden">
-  <h2 style="margin-bottom:20px">WÃ¤hle dein Schicksal</h2>
-  <div class="avatar-grid" id="avatar-list"></div>
+  <h2 style="margin-bottom:20px">Wähle dein Schicksal</h2>  <div class="avatar-grid" id="avatar-list"></div>
 </div>
 
 <div id="story-screen" class="full-screen hidden center-box">
     <img id="story-img-display" src="" alt="Story">
-    <button class="story-nav-btn btn-exit" onclick="app.nav('avatar-screen'); app.playSound('click')">EXIT</button>
+    <button class="story-nav-btn btn-exit" onclick="app.nav('avatar-screen'); app.playSound('click')">BEENDEN</button>
     <button class="story-nav-btn btn-enter" onclick="app.confirmEnterRoom()">ENTER</button>
 </div>
 
@@ -196,7 +195,7 @@
 
 <div id="cal-screen" class="full-screen hidden center-box" style="background:rgba(0,0,0,0.8);">
   <div class="overlay-screen">
-    <div class="back-link" onclick="app.nav('room-screen')"><span>â† ZurÃ¼ck</span></div>
+    <div class="back-link" onclick="app.nav('room-screen')"><span>† Zurück</span></div>
     <div class="overlay-title">Kalender</div>
     <div class="cal-header-row">
       <button class="cal-arrow" onclick="app.shiftMonth(-1); app.playSound('click')"><span>â—€</span></button>
@@ -206,15 +205,15 @@
     </div>
     <div class="weekday-row"><div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div></div>
     <div class="cal-grid" id="cal-grid"></div>
-    <div class="cal-footer-hint">Tippe auf einen Tag fÃ¼r Details</div>
+    <div class="cal-footer-hint">Tipp auf einen Tag für Details</div>
   </div>
 </div>
 
 <div id="day-screen" class="full-screen hidden center-box" style="background:rgba(0,0,0,0.9);">
   <div class="overlay-screen">
     <div class="day-header">
-       <div class="back-link" onclick="app.nav('cal-screen')" style="margin:0;"><span>â† Kalender</span></div>
-       <div class="day-date" id="day-view-date">DD.MM.YYYY</div>
+       <div class="back-link" onclick="app.nav('cal-screen')" style="margin:0;"><span>† Kalender</span></div>
+       <div class="day-date" id="day-view-date">TT.MM.JJJJ</div>
     </div>
     <div id="day-timeline" class="timeline"></div>
     <button class="floating-add-btn" onclick="app.openEventForm(null)">+</button>
@@ -223,11 +222,12 @@
 
 <div id="share-screen" class="full-screen hidden center-box" style="background:rgba(0,0,0,0.95); z-index:70;">
   <div class="overlay-screen">
-    <div class="back-link" onclick="app.closeShare()"><span>â† Abbrechen</span></div>
-    <div class="overlay-title">GefÃ¤hrten wÃ¤hlen</div>
-    <p style="color:#aaa;font-size:0.9rem;margin-bottom:10px;">WÃ¤hle einen GefÃ¤hrten aus dem Kristall:</p>
+    <div class="back-link" onclick="app.closeShare()"><span>† Abbrechen</span></div>
+    <div class="overlay-title">Gefährten wählen</div>
+    <p style="color:#aaa;font-size:0.9rem;margin-bottom:10px;">Wähle einen Anhänger aus dem Kristall:</p>
     <div class="scroll-list" id="share-list"></div>
-  </div></div>
+  </div>
+</div>
 
 <div id="event-screen" class="full-screen hidden center-box" style="background:rgba(0,0,0,0.95); z-index:60;">
   <div class="overlay-screen">
@@ -342,16 +342,15 @@
     function formatDateTime(d) { return d.toLocaleDateString() + " " + d.toLocaleTimeString().slice(0, 5); }
     var audioCtx = null;
     function initAudio() { if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
-    
-    var app = {
-      Zustand: {
-        Benutzername: localStorage.getItem("mc_username") || null,
+        var app = {
+      state: {
+        userName: localStorage.getItem("mc_username") || null,
         av: "myuri",
         pendingAv: null,
         xp: parseInt(localStorage.getItem("mc_xp") || "0"),
         events: JSON.parse(localStorage.getItem("mc_events_v2") || "{}"),
-        Grimoire: JSON.parse(localStorage.getItem("mc_grimoire") || "[]"),
-        Freunde: JSON.parse(localStorage.getItem("mc_friends") || "[]"),
+        grimoire: JSON.parse(localStorage.getItem("mc_grimoire") || "[]"),
+        friends: JSON.parse(localStorage.getItem("mc_friends") || "[]"),
         crystalLog: JSON.parse(localStorage.getItem("mc_crystal_log") || "[]"),
         maxFriendsHighscore: parseInt(localStorage.getItem("mc_max_friends_score") || "0"),
         dailyShares: JSON.parse(localStorage.getItem("mc_daily_shares") || '{"date":"", "count":0}'),
@@ -366,17 +365,17 @@
       init: function () {
         for(var k in this.state.events) { if(!Array.isArray(this.state.events[k])) this.state.events[k] = [this.state.events[k]]; }
         
-        // Prüfen, ob ein importiertes Ereignis von der URL stammt
+        // Check for imported event from URL
         this.checkImportLink();
         
-        // Startbildschirm -> dann Anmeldedaten oder Avatar anzeigen
+        // Splash screen -> then show login or avatar
         var self = this;
         setTimeout(function() {
             var splash = document.getElementById("splash-screen");
             splash.style.animation = "splashFade 0.8s forwards";
             setTimeout(function() {
                 splash.classList.add("hidden");
-                if(!self.state.userName) { self.nav("login-screen"); }
+                if(!self.state.userName) { self.nav("login-screen"); } 
                 else { self.renderAvatars(); self.updateRoomTopBar(); self.nav("avatar-screen"); }
             }, 800);
         }, 2200);
@@ -384,8 +383,8 @@
         if ("Notification" in window) Notification.requestPermission();
         setInterval(this.checkReminders.bind(this), 60000);
         
-        // Service Worker für PWA registrieren
-        if ('serviceWorker' im Navigator) {
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js').catch(function(e) { console.log('SW:', e); });
         }
       },
@@ -395,7 +394,7 @@
           var importData = params.get("import");
           if(!importData) return;
           
-          versuchen {
+          try {
               var json = decodeURIComponent(escape(atob(importData)));
               var data = JSON.parse(json);
               if(!data.t || !data.d) return;
@@ -405,30 +404,30 @@
               var msg = "ðŸ“¨ Termin von " + (data.f || "Unbekannt") + ":\n\n"
                   + "ðŸ“œ " + data.t + "\n"
                   + "ðŸ“… " + niceDate + (data.tm ? " um " + data.tm : "") + "\n"
-                  + (data.n ? "ðŸ“ " + data.n + "\n" : "")
+                  + (data.n ? "ðŸ“ " + data.n + "\n" : "")
                   + "\nAnnehmen?";
               
               if(confirm(msg)) {
-                  // Akzeptieren: Mit dem Marker "receivedFrom" zum Kalender hinzufügen
+                  // Accept: add to calendar with receivedFrom marker
                   var key = data.d;
                   if(!this.state.events[key]) this.state.events[key] = [];
                   this.state.events[key].push({
-                      Titel: data.t,
-                      Zeit: data.tm || "",
-                      Anmerkungen: data.n || "",
-                      gemeinsam genutzt: falsch,
-                      empfangen von: data.f || „Unbekannt“
+                      title: data.t,
+                      time: data.tm || "",
+                      notes: data.n || "",
+                      shared: false,
+                      receivedFrom: data.f || "Unbekannt"
                   });
                   localStorage.setItem("mc_events_v2", JSON.stringify(this.state.events));
-                  Alert("âœ¨ Termin angenommen! Er wurde in deine Chronik eingetragen.");
-              } anders {
+                  alert("âœ¨ Termin angenommen! Er wurde in deine Chronik eingetragen.");
+              } else {
                   alert("Termin abgelehnt.");
               }
               
-              // Bereinigende URL
+              // Clean URL
               window.history.replaceState({}, document.title, window.location.pathname);
           } catch(e) {
-              console.log("Importfehler:", e);
+              console.log("Import error:", e);
           }
       },
 
@@ -442,7 +441,7 @@
                   var parts = evt.time.split(":");
                   var h = parseInt(parts[0]); var m = parseInt(parts[1]);
                   if(now.getHours() === h && now.getMinutes() === m) {
-                      new Notification("Erinnerung: " + evt.title, { body: evt.notes || "Termin gestartet!", icon: DATA[this.state.av].icon });
+                      new Notification("Erinnerung: " + evt.title, { body: evt.notes || "Termin startet!", icon: DATA[this.state.av].icon });
                       this.playSound('click');
                   }
               }
@@ -453,16 +452,17 @@
           initAudio();
           if(!audioCtx) return;
           var t = audioCtx.currentTime;
-          var av = this.state.av || „myuri“;
+          var av = this.state.av || "myuri";
           
-          // Avatar-spezifische Soundprofile
-          var profiles = {              lilith: { clickWave:"sawtooth", clickFreq:400, clickEnd:200, enterWave:"sawtooth", enterFreq:80, enterEnd:40, clickDur:0.12, enterDur:1.8 },
-              solvanna: { clickWave:"sine", clickFreq:1000, clickEnd:1400, enterWave:"sine", enterFreq:300, enterEnd:500, clickDur:0.15, enterDur:1.5 },
-              elandra: { clickWave:"sine", clickFreq:600, clickEnd:900, enterWave:"sine", enterFreq:150, enterEnd:100, clickDur:0.18, enterDur:2.0 },
-              aura: { clickWave:"square", clickFreq:900, clickEnd:1100, enterWave:"square", enterFreq:120, enterEnd:60, clickDur:0.08, enterDur:1.2 },
-              myuri: { clickWave:"triangle", clickFreq:700, clickEnd:1200, enterWave:"triangle", enterFreq:200, enterEnd:80, clickDur:0.14, enterDur:1.6 }
+          // Avatar-specific sound profiles
+          var profiles = {
+              lilith:   { clickWave:"sawtooth", clickFreq:400,  clickEnd:200,  enterWave:"sawtooth", enterFreq:80,  enterEnd:40,  clickDur:0.12, enterDur:1.8 },
+              solvanna: { clickWave:"sine",     clickFreq:1000, clickEnd:1400, enterWave:"sine",     enterFreq:300, enterEnd:500, clickDur:0.15, enterDur:1.5 },
+              elandra:  { clickWave:"sine",     clickFreq:600,  clickEnd:900,  enterWave:"sine",     enterFreq:150, enterEnd:100, clickDur:0.18, enterDur:2.0 },
+              aura:     { clickWave:"square",   clickFreq:900,  clickEnd:1100, enterWave:"square",   enterFreq:120, enterEnd:60,  clickDur:0.08, enterDur:1.2 },
+              myuri:    { clickWave:"triangle", clickFreq:700,  clickEnd:1200, enterWave:"triangle", enterFreq:200, enterEnd:80,  clickDur:0.14, enterDur:1.6 }
           };
-          var p = Profile[av] || Profile.myuri;
+          var p = profiles[av] || profiles.myuri;
           
           if(type === 'click') {
               var osc=audioCtx.createOscillator(); var gain=audioCtx.createGain();
@@ -482,7 +482,7 @@
               gain.gain.setValueAtTime(0.15, t);
               gain.gain.exponentialRampToValueAtTime(0.001, t + p.enterDur);
               osc.start(t); osc.stop(t + p.enterDur);
-              // Zweite Harmonische für mehr Fülle
+              // Second harmonic for richness
               var osc2=audioCtx.createOscillator(); var gain2=audioCtx.createGain();
               osc2.connect(gain2); gain2.connect(audioCtx.destination);
               osc2.type = 'sine';
@@ -496,7 +496,7 @@
 
       registerUser: function() {
           var name = document.getElementById("login-name").value.trim();
-          if(!name) { Alert("Bitte Namen eingeben."); zurückkehren; }
+          if(!name) { alert("Bitte Namen eingeben."); return; }
           this.state.userName = name; localStorage.setItem("mc_username", name);
           if("Notification" in window) Notification.requestPermission();
           this.renderAvatars(); this.updateRoomTopBar(); this.nav("avatar-screen");
@@ -504,20 +504,19 @@
 
       getRankName: function() { var xp = this.state.xp; if (xp >= 135) return "Archmagus Prime"; if (xp >= 85) return "Arkanist"; if (xp >= 50) return "Runenmeister"; if (xp >= 25) return "Seher"; if (xp >= 10) return "Erwachter"; return "Novize"; },
       getNextRankStats: function() { var xp = this.state.xp; if (xp < 10) return { target: 10, name: "Erwachter" }; if (xp < 25) return { target: 25, name: "Seher" }; if (xp < 50) return { target: 50, name: "Runenmeister" }; if (xp < 85) return { target: 85, name: "Arkanist" }; if (xp < 135) return { target: 135, name: "Archmagus Prime" }; return { target: xp, name: "Maximal" }; },
-      addXP: function(amount) { var oldRank = this.getRankName(); this.state.xp += Betrag; localStorage.setItem("mc_xp", this.state.xp); var newRank = this.getRankName(); this.updateRoomTopBar(); if(oldRank !== newRank) warning("âœ¨ AUFSTIEG! Du bist nun " + newRank + " âœ¨"); },
+      addXP: function(amount) { var oldRank = this.getRankName(); this.state.xp += amount; localStorage.setItem("mc_xp", this.state.xp); var newRank = this.getRankName(); this.updateRoomTopBar(); if(oldRank !== newRank) alert("âœ¨ AUFSTIEG! Du bist nun " + newRank + " âœ¨"); },
       updateRoomTopBar: function () {
         var d = DATA[this.state.av] || DATA["myuri"]; var nEl = document.getElementById("u-roomname"); if(nEl) nEl.textContent = d.room; var dEl = document.getElementById("u-displayname"); if(dEl) dEl.textContent = (this.state.userName || "Reisender") + " " + this.getRankName();
         var img = document.getElementById("mini-avatar"); if(img) img.src = d.av;
       },
-      nav: function (sid) { ["splash-screen","login-screen,","avatar-screen,","story-screen,","room-screen,","cal-screen,","event-screen,","grim-screen,","crystal-screen,","day-screen,","share-screen"].forEach(s => { var el = document.getElementById(s); if(el) el.classList.add("hidden"); }); document.getElementById(sid).classList.remove("hidden"); },
+      nav: function (sid) { ["splash-screen","login-screen","avatar-screen","story-screen","room-screen","cal-screen","event-screen","grim-screen","crystal-screen","day-screen","share-screen"].forEach(s => { var el = document.getElementById(s); if(el) el.classList.add("hidden"); }); document.getElementById(sid).classList.remove("hidden"); },
       
-      showStory: function(key) { this.state.pendingAv = key; var d = DATA[key]; document.getElementById("story-img-display").src = d.storyImg; document.documentElement.style.setProperty("--main", dc); this.playSound('click'); this.nav("story-screen"); },
+      showStory: function(key) { this.state.pendingAv = key; var d = DATA[key]; document.getElementById("story-img-display").src = d.storyImg; document.documentElement.style.setProperty("--main", d.c); this.playSound('click'); this.nav("story-screen"); },
       confirmEnterRoom: function() { if(this.state.pendingAv) { if("Notification" in window && Notification.permission === 'default') Notification.requestPermission(); this.enterRoom(this.state.pendingAv); this.playSound('enter'); } },
-      renderAvatars: function () { var list = document.getElementById("avatar-list"); list.innerHTML = ""; for (var key in DATA) { (function (k) { var d = DATA[k]; var div = document.createElement("div"); div.className = "avatar-choice"; div.onclick = function () { app.showStory(k); }; div.innerHTML = `<div class="avatar-circle" style="border-color:${dc}"><img class="avatar-img" src="${d.av}"></div><div style="color:${dc};margin-top:5px;font-weight:bold;">${dn}</div>`; list.appendChild(div); })(key); } },
-      enterRoom: function (key) { this.state.av = key; var d = DATA[key]; document.documentElement.style.setProperty("--main", dc); var img = document.getElementById("room-bg-img"); if(img) { img.style.display="block"; img.src = d.img; img.onerror = function() { this.style.display="none"; document.getElementById('room-container').style.background=`radial-gradient(circle, ${dc}33, #000)`; }; } var mini = document.getElementById("mini-avatar"); if(mini) { mini.src = d.av; mini.onerror=function(){this.style.display="none";} } this.updateRoomTopBar(); this.nav("room-screen"); },
-      
+      renderAvatars: function () { var list = document.getElementById("avatar-list"); list.innerHTML = ""; for (var key in DATA) { (function (k) { var d = DATA[k]; var div = document.createElement("div"); div.className = "avatar-choice"; div.onclick = function () { app.showStory(k); }; div.innerHTML = `<div class="avatar-circle" style="border-color:${d.c}"><img class="avatar-img" src="${d.av}"></div><div style="color:${d.c};margin-top:5px;font-weight:bold;">${d.n}</div>`; list.appendChild(div); })(key); } },
+      enterRoom: function (key) { this.state.av = key; var d = DATA[key]; document.documentElement.style.setProperty("--main", d.c); var img = document.getElementById("room-bg-img"); if(img) { img.style.display="block"; img.src = d.img; img.onerror = function() { this.style.display="none"; document.getElementById('room-container').style.background=`radial-gradient(circle, ${d.c}33, #000)`; }; } var mini = document.getElementById("mini-avatar"); if(mini) { mini.src = d.av; mini.onerror=function(){this.style.display="none";} } this.updateRoomTopBar(); this.nav("room-screen"); },      
       openCal: function () { var now = new Date(); this.state.calYear = now.getFullYear(); this.state.calMonth = now.getMonth(); this.buildSel(); this.renderCal(); this.nav("cal-screen"); },
-      buildSel: function() { var mSel = document.getElementById("cal-month-select"); var ySel = document.getElementById("cal-year-select"); var mNames = ["Jan","Feb,Mär,Apr,Mai,Jun,Jul,Aug,Sep,Okt,Nov,Dez"]; mSel.innerHTML=""; for(var i=0;i<12;i++){ var o=document.createElement("option"); o.value=i; o.textContent=mNames[i]; if(i===this.state.calMonth) o.selected=true; mSel.appendChild(o); } ySel.innerHTML=""; var b=new Date().getFullYear(); for(var y=b-2;y<=b+10;y++){ var o=document.createElement("option"); o.value=y; o.textContent=y; if(y===this.state.calYear) o.selected=true; ySel.appendChild(o); } },
+      buildSel: function() { var mSel = document.getElementById("cal-month-select"); var ySel = document.getElementById("cal-year-select"); var mNames = ["Jan","Feb","MÃ¤r","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"]; mSel.innerHTML=""; for(var i=0;i<12;i++){ var o=document.createElement("option"); o.value=i; o.textContent=mNames[i]; if(i===this.state.calMonth) o.selected=true; mSel.appendChild(o); } ySel.innerHTML=""; var b=new Date().getFullYear(); for(var y=b-2;y<=b+10;y++){ var o=document.createElement("option"); o.value=y; o.textContent=y; if(y===this.state.calYear) o.selected=true; ySel.appendChild(o); } },
       changeMonthSelect: function(){ this.state.calMonth=parseInt(document.getElementById("cal-month-select").value); this.renderCal(); },
       changeYearSelect: function(){ this.state.calYear=parseInt(document.getElementById("cal-year-select").value); this.renderCal(); },
       shiftMonth: function(d){ var m=this.state.calMonth+d; var y=this.state.calYear; if(m<0){m=11;y--;}else if(m>11){m=0;y++;} this.state.calMonth=m;this.state.calYear=y; this.buildSel(); this.renderCal(); },
@@ -526,14 +525,14 @@
       renderDayView: function() { var dateParts = this.state.selectedDateKey.split("-"); document.getElementById("day-view-date").textContent = dateParts[2]+"."+dateParts[1]+"."+dateParts[0]; var list = document.getElementById("day-timeline"); list.innerHTML = ""; var evts = this.state.events[this.state.selectedDateKey] || []; evts.sort((a,b) => (a.time || "00:00").localeCompare(b.time || "00:00")); if(evts.length === 0) { list.innerHTML = '<div style="color:#666;text-align:center;padding:20px;">Die Zeit schweigt...</div>'; } else { var dCfg = DATA[this.state.av]; evts.forEach((e, idx) => { var div = document.createElement("div"); div.className = "timeline-event"; if(e.receivedFrom) { div.style.borderLeft = "3px solid " + dCfg.c; div.style.borderColor = dCfg.c; } var receivedTag = e.receivedFrom ? `<span style="font-size:0.75rem;color:${dCfg.c};display:block;margin-bottom:4px;">ðŸ“¨ Von ${e.receivedFrom}</span>` : ""; var shareBtn = ""; if(e.receivedFrom) { shareBtn = `<span style="color:#aaa;font-size:0.8rem">ðŸ“¨ Empfangen</span>`; } else if(e.shared) { shareBtn = `<span style="color:#aaa;font-size:0.8rem">âœ“ Geteilt</span>`; } else { shareBtn = `<button class="secondary t-btn" onclick="app.shareEvent(${idx});app.playSound('click')">Teilen (+5 XP)</button>`; } div.innerHTML = `${receivedTag}<span class="t-time">${e.time || "--:--"}</span><span class="t-title">${e.title}</span><span class="t-note">${e.notes || ""}</span><div class="t-actions"><button class="t-btn" onclick="app.openEventForm(${idx});app.playSound('click')">Bearbeiten</button>${shareBtn}</div>`; list.appendChild(div); }); } },
       openEventForm: function(idx) { this.state.selectedEventIdx = idx; var evts = this.state.events[this.state.selectedDateKey] || []; if(idx !== null && evts[idx]) { var e = evts[idx]; document.getElementById("evt-title").value = e.title; document.getElementById("evt-time").value = e.time; document.getElementById("evt-notes").value = e.notes; document.getElementById("btn-delete-evt").style.display = "inline-block"; } else { document.getElementById("evt-title").value = ""; document.getElementById("evt-time").value = ""; document.getElementById("evt-notes").value = ""; document.getElementById("btn-delete-evt").style.display = "none"; } this.nav("event-screen"); },
       saveEvent: function() { var t = document.getElementById("evt-title").value.trim(); if(!t){alert("Titel?"); return;} var newEvt = { title: t, time: document.getElementById("evt-time").value, notes: document.getElementById("evt-notes").value, shared: false }; var key = this.state.selectedDateKey; if(!this.state.events[key]) this.state.events[key] = []; if(this.state.selectedEventIdx !== null) { var old = this.state.events[key][this.state.selectedEventIdx]; newEvt.shared = old.shared; this.state.events[key][this.state.selectedEventIdx] = newEvt; } else { this.state.events[key].push(newEvt); } localStorage.setItem("mc_events_v2", JSON.stringify(this.state.events)); this.closeEventForm(); },
-      deleteEvent: function() { if(this.state.selectedEventIdx !== null && confirm("Löschen?")) { var key = this.state.selectedDateKey; this.state.events[key].splice(this.state.selectedEventIdx, 1); localStorage.setItem("mc_events_v2", JSON.stringify(this.state.events)); this.closeEventForm(); } },
+      deleteEvent: function() { if(this.state.selectedEventIdx !== null && confirm("LÃ¶schen?")) { var key = this.state.selectedDateKey; this.state.events[key].splice(this.state.selectedEventIdx, 1); localStorage.setItem("mc_events_v2", JSON.stringify(this.state.events)); this.closeEventForm(); } },
       shareEvent: function(idx) {
-          if(idx === undefined && this.state.selectedEventIdx !== null) idx = this.state.selectedEventIdx;
+          if(idx === undefined && this.state.selectedEventIdx !== null) idx = this.state.selectedEventIdx; 
           if(idx === null) return;
           var key = this.state.selectedDateKey; var evt = this.state.events[key][idx];
-          if(evt.shared) { Alert("Schon geteilt! (0 XP)"); zurückkehren; }
+          if(evt.shared) { alert("Schon geteilt! (0 XP)"); return; }
           this.state.pendingShareIdx = idx;
-          if(this.state.friends.length === 0) { Alert("Du bist alleine! FÃ¼ge erst gefÃ¤hrten im Kristall hinzu."); zurückkehren; }
+          if(this.state.friends.length === 0) { alert("Du bist alleine! FÃ¼ge erst GefÃ¤hrten im Kristall hinzu."); return; }
           var list = document.getElementById("share-list"); list.innerHTML = "";
           this.state.friends.forEach(f => { var btn = document.createElement("button"); btn.textContent = f; btn.className = "secondary"; btn.style.width = "100%"; btn.style.marginBottom = "5px"; btn.onclick = function() { app.finalizeShare(f); }; list.appendChild(btn); });
           this.nav("share-screen");
@@ -541,36 +540,36 @@
       finalizeShare: function(friendName) {
           var key = this.state.selectedDateKey; var idx = this.state.pendingShareIdx; var evt = this.state.events[key][idx];
           var tStr = new Date().toISOString().split('T')[0]; if(this.state.dailyShares.date !== tStr) { this.state.dailyShares = { date: tStr, count: 0 }; }
-          var rank = this.getRankName(); var limit = RANK_SYSTEM[rank].shareLimit; if(this.state.dailyShares.count >= limit) { Alert("Tageslimit erreicht!"); zurückkehren; }
+          var rank = this.getRankName(); var limit = RANK_SYSTEM[rank].shareLimit; if(this.state.dailyShares.count >= limit) { alert("Tageslimit erreicht!"); return; }
           
-          // Erstelle teilbare Ereignisdaten als URL-Parameter
+          // Build shareable event data as URL parameter
           var shareData = {
               t: evt.title,
-              d: Schlüssel,
+              d: key,
               tm: evt.time || "",
               n: evt.notes || "",
-              f: this.state.userName || „Ein Reisender“
+              f: this.state.userName || "Ein Reisender"
           };
           var encoded = btoa(unescape(encodeURIComponent(JSON.stringify(shareData))));
           
-          // WhatsApp-Nachricht mit Importlink erstellen
+          // Build WhatsApp message with import link
           var dateParts = key.split("-");
           var niceDate = dateParts[2] + "." + dateParts[1] + "." + dateParts[0];
           var siteUrl = window.location.href.split("?")[0];
           var importLink = siteUrl + "?import=" + encoded;
           
-          var waText = "âš”ï¸ *Mystic Calendar – Geteilter Termin*\n\n"
-              + „ðŸ“œ *“ + evt.title + „*\n“
+          var waText = "âš”ï¸ *Mystic Calendar â€“ Geteilter Termin*\n\n"
+              + "ðŸ“œ *" + evt.title + "*\n"
               + "ðŸ“… " + niceDate + (evt.time ? " um " + evt.time : "") + "\n"
-              + (evt.notes ? "ðŸ“ " + evt.notes + "\n" : "")
-              + "\nðŸ'‰ Tippe den Link um den Termin anzunehmen:\n" + importLink;
+              + (evt.notes ? "ðŸ“ " + evt.notes + "\n" : "")
+              + "\nðŸ‘‰ Tippe den Link um den Termin anzunehmen:\n" + importLink;
           
           var waUrl = "https://wa.me/?text=" + encodeURIComponent(waText);
           window.open(waUrl, '_blank');
           
           evt.shared = true; evt.sharedTo = friendName;
           this.state.dailyShares.count++; this.addXP(5);
-          localStorage.setItem("mc_events_v2", JSON.stringify(this.state.events));
+          localStorage.setItem("mc_events_v2", JSON.stringify(this.state.events)); 
           localStorage.setItem("mc_daily_shares", JSON.stringify(this.state.dailyShares));
           this.closeShare(); this.renderDayView(); this.nav("day-screen");
       },
@@ -578,7 +577,7 @@
       closeEventForm: function(){ this.renderDayView(); this.nav("day-screen"); },
       
       openGrimoire: function(){this.renderGrim();this.nav("grim-screen");},
-      renderGrim: function(){ var lic = document.getElementById("grim-license"); var next = this.getNextRankStats(); var pct = Math.min(100, Math.floor((this.state.xp / next.target) * 100)); var shares = this.state.dailyShares.count; var rName = this.getRankName(); var rLetter = "E-Rang"; if(rName==="Erwachter")rLetter="D-Rang"; if(rName==="Seher")rLetter="C-Rang"; if(rName==="Runenmeister")rLetter="B-Rang"; if(rName==="Arkanist")rLetter="A-Rang"; if(rName==="Archmagus Prime")rLetter="S-Rang"; var limits = RANK_SYSTEM[rName]; var qVal = this.state.dailyAsks.count + " / " + limits.dailyAskLimit; var gVal = this.state.friends.length + " / " + limits.maxFriends; var eVal = this.state.grimoire.length + " / âˆž"; lic.innerHTML = `<div class="license-card"><div class="license-header">${this.state.userName}</div><div class="license-rank">${rName} (${rLetter})</div><div class="xp-bar-container"><div class="xp-bar-fill" style="width:${pct}%"></div></div><div class="xp-text">${this.state.xp} / ${next.target} XP</div><div class="stats-grid"><div class="stat-box"><span class="stat-val">${qVal}</span><span class="stat-label">Fragen</span></div><div class="stat-box"><span class="stat-val">${gVal}</span><span class="stat-label">Gilde</span></div><div class="stat-box"><span class="stat-val">${eVal}</span><span class="stat-label">Eintrag</span></div></div></div>`; var l=document.getElementById("grim-output"); l.innerHTML=""; this.state.grimoire.forEach((x,i)=>{ var d=document.createElement("div"); d.className="list-item"; d.innerHTML=`<div><div class="item-text">${x.text}</div><div class="item-sub">${x.date}</div></div><button class="small-btn danger" onclick="app.delGrim(${i}); app.playSound('click')">x</button>`; l.appendChild(d); }); },
+      renderGrim: function(){ var lic = document.getElementById("grim-license"); var next = this.getNextRankStats(); var pct = Math.min(100, Math.floor((this.state.xp / next.target) * 100)); var shares = this.state.dailyShares.count; var rName = this.getRankName(); var rLetter = "E-Rang"; if(rName==="Erwachter")rLetter="D-Rang"; if(rName==="Seher")rLetter="C-Rang"; if(rName==="Runenmeister")rLetter="B-Rang"; if(rName==="Arkanist")rLetter="A-Rang"; if(rName==="Archmagus Prime")rLetter="S-Rang"; var limits = RANK_SYSTEM[rName]; var qVal = this.state.dailyAsks.count + " / " + limits.dailyAskLimit; var gVal = this.state.friends.length + " / " + limits.maxFriends; var eVal = this.state.grimoire.length + " / âˆž"; lic.innerHTML = `<div class="license-card"><div class="license-header">${this.state.userName}</div><div class="license-rank">${rName} (${rLetter})</div><div class="xp-bar-container"><div class="xp-bar-fill" style="width:${pct}%"></div></div><div class="xp-text">${this.state.xp} / ${next.target} XP</div><div class="stats-grid"><div class="stat-box"><span class="stat-val">${qVal}</span><span class="stat-label">Fragen</span></div><div class="stat-box"><span class="stat-val">${gVal}</span><span class="stat-label">Gilde</span></div><div class="stat-box"><span class="stat-val">${eVal}</span><span class="stat-label">EintrÃ¤ge</span></div></div></div>`; var l=document.getElementById("grim-output"); l.innerHTML=""; this.state.grimoire.forEach((x,i)=>{ var d=document.createElement("div"); d.className="list-item"; d.innerHTML=`<div><div class="item-text">${x.text}</div><div class="item-sub">${x.date}</div></div><button class="small-btn danger" onclick="app.delGrim(${i}); app.playSound('click')">x</button>`; l.appendChild(d); }); },
       addGrimoireEntry: function(){ var v=document.getElementById("grim-input").value.trim(); if(!v)return; var rank=this.getRankName(); var limit=RANK_SYSTEM[rank].maxGrimoire; if(this.state.grimoire.length>=limit){alert("Grimoire voll! ("+limit+" Max)");return;} this.state.grimoire.push({text:v, date:formatDateTime(new Date())}); localStorage.setItem("mc_grimoire", JSON.stringify(this.state.grimoire)); document.getElementById("grim-input").value=""; this.renderGrim(); },
       delGrim: function(i){ if(confirm("Weg?")){ this.state.grimoire.splice(i,1); localStorage.setItem("mc_grimoire", JSON.stringify(this.state.grimoire)); this.renderGrim(); }},
       openOrb: function(){this.renderOrb();this.nav("crystal-screen");},
@@ -586,13 +585,13 @@
       getCalendarContext: function() {
           var today = new Date();
           var ctx = "";
-          // Ereignisse für heute, morgen und die nächsten 5 Tage abrufen
+          // Get events for today, tomorrow, and next 5 days
           for(var offset = 0; offset < 7; offset++) {
               var d = new Date(today); d.setDate(d.getDate() + offset);
               var key = makeDateKey(d.getFullYear(), d.getMonth(), d.getDate());
               var evts = this.state.events[key] || [];
               if(evts.length > 0) {
-                  var dayLabel = offset === 0 ? „Heute“ : Offset === 1 ? „Morgen“ : „In „ + Offset + „ Tagen“;
+                  var dayLabel = offset === 0 ? "Heute" : offset === 1 ? "Morgen" : "In " + offset + " Tagen";
                   var dp = key.split("-");
                   ctx += dayLabel + " (" + dp[2] + "." + dp[1] + "." + dp[0] + "): ";
                   evts.forEach(function(e, i) {
@@ -600,13 +599,13 @@
                       if(e.receivedFrom) ctx += " (von " + e.receivedFrom + ")";
                       if(i < evts.length - 1) ctx += ", ";
                   });
-                  ctx += ".";
+                  ctx += ". ";
               }
           }
-          return ctx || „Keine Termine in den nächsten 7 Tagen.“;
+          return ctx || "Keine Termine in den nÃ¤chsten 7 Tagen.";
       },
 
-      askCrystal: async function() { var qEl=document.getElementById("crystal-question"); var q=qEl.value.trim(); if(!q)return; var tStr=new Date().toISOString().split('T')[0]; if(this.state.dailyAsks.date!==tStr){this.state.dailyAsks={date:tStr,count:0};} var rank=this.getRankName(); var limit=RANK_SYSTEM[rank].dailyAskLimit; if(this.state.dailyAsks.count>=limit){this.log(q, "ðŸ›' "+LIMIT_MESSAGES[rank][this.state.av.toLowerCase()]); qEl.value=""; return;} qEl.value=""; var stat=document.getElementById("crystal-status"); var oldStat=stat.textContent; stat.textContent="ðŸ”® Die Kugel glÃ¼ht..."; if(AI_CONFIG.apiUrl.includes("DEIN-NAME")){this.log(q,"âš ï¸ SchlÃ¼ssel der Macht fehlt! Trage deine Worker-URL in AI_CONFIG ein.");stat.textContent=oldStat;return;} this.addXP(1); this.state.dailyAsks.count++; localStorage.setItem("mc_daily_asks", JSON.stringify(this.state.dailyAsks)); try{ var av=DATA[this.state.av]; var userName=this.state.userName||"Reisender"; var rankName=this.getRankName(); var today=new Date(); var todayStr=today.getFullYear()+"-"+pad2(today.getMonth()+1)+"-"+pad2(today.getDate()); var tomorrow=new Date(today); tomorrow.setDate(tomorrow.getDate()+1); var tomorrowStr=tomorrow.getFullYear()+"-"+pad2(tomorrow.getMonth()+1)+"-"+pad2(tomorrow.getDate()); var calCtx=this.getCalendarContext(); var fullPersona=av.persona+todayStr+" (Morgen: "+tomorrowStr+"). Der Fragesteller heiÃŸt "+userName+" und trÃ¤gt den Rang '"+rankName+"'. Passe deine Anrede entsprechend an.\n\nKALENDER-WISSEN: Wenn der Fragesteller nach Terminen, dem Tagesplan, oder was ansteht, nutze folgende Informationen aus seiner Chronik und beschreibe sie im Fantasy-Stil: "+calCtx; var res=await fetch(AI_CONFIG.apiUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contents:[{role:"user" ,parts:[{text:q}]}],systemInstruction:{parts:[{text:fullPersona}]},generationConfig:{temperature:0.8,maxOutputTokens:250}})}); var data=await res.json(); if(data.candidates && data.candidates[0] && data.candidates[0].content){ var fullText=data.candidates[0].content.parts[0].text; var actionResult=this.parseAndExecuteActions(fullText); var displayText=actionResult.cleanText; this.log(q,displayText); if(actionResult.calendarCreated || actionResult.grimoireCreated){ this.playSound('enter'); } }else if(data.error){throw new Error(data.error.message||"Kristall schweigt");}else{throw new Error("Keine Antwort");} }catch(e){this.log(q,"Der Nebel verschlingt die Vision... ("+e.message+")");} stat.textContent=oldStat;},
+      askCrystal: async function() { var qEl=document.getElementById("crystal-question"); var q=qEl.value.trim(); if(!q)return; var tStr=new Date().toISOString().split('T')[0]; if(this.state.dailyAsks.date!==tStr){this.state.dailyAsks={date:tStr,count:0};} var rank=this.getRankName(); var limit=RANK_SYSTEM[rank].dailyAskLimit; if(this.state.dailyAsks.count>=limit){this.log(q, "ðŸ›‘ "+LIMIT_MESSAGES[rank][this.state.av.toLowerCase()]); qEl.value=""; return;} qEl.value=""; var stat=document.getElementById("crystal-status"); var oldStat=stat.textContent; stat.textContent="ðŸ”® Die Kugel glÃ¼ht..."; if(AI_CONFIG.apiUrl.includes("DEIN-NAME")){this.log(q,"âš ï¸ SchlÃ¼ssel der Macht fehlt! Trage deine Worker-URL in AI_CONFIG ein.");stat.textContent=oldStat;return;} this.addXP(1); this.state.dailyAsks.count++; localStorage.setItem("mc_daily_asks", JSON.stringify(this.state.dailyAsks)); try{ var av=DATA[this.state.av]; var userName=this.state.userName||"Reisender"; var rankName=this.getRankName(); var today=new Date(); var todayStr=today.getFullYear()+"-"+pad2(today.getMonth()+1)+"-"+pad2(today.getDate()); var tomorrow=new Date(today); tomorrow.setDate(tomorrow.getDate()+1); var tomorrowStr=tomorrow.getFullYear()+"-"+pad2(tomorrow.getMonth()+1)+"-"+pad2(tomorrow.getDate()); var calCtx=this.getCalendarContext(); var fullPersona=av.persona+todayStr+" (Morgen: "+tomorrowStr+"). Der Fragesteller heiÃŸt "+userName+" und trÃ¤gt den Rang '"+rankName+"'. Passe deine Anrede entsprechend an.\n\nKALENDER-WISSEN: Wenn der Fragesteller nach Terminen, dem Tagesplan, oder was ansteht fragt, nutze folgende Informationen aus seiner Chronik und beschreibe sie im Fantasy-Stil: "+calCtx; var res=await fetch(AI_CONFIG.apiUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contents:[{role:"user",parts:[{text:q}]}],systemInstruction:{parts:[{text:fullPersona}]},generationConfig:{temperature:0.8,maxOutputTokens:250}})}); var data=await res.json(); if(data.candidates && data.candidates[0] && data.candidates[0].content){ var fullText=data.candidates[0].content.parts[0].text; var actionResult=this.parseAndExecuteActions(fullText); var displayText=actionResult.cleanText; this.log(q,displayText); if(actionResult.calendarCreated || actionResult.grimoireCreated){ this.playSound('enter'); } }else if(data.error){throw new Error(data.error.message||"Kristall schweigt");}else{throw new Error("Keine Antwort");} }catch(e){this.log(q,"Der Nebel verschlingt die Vision... ("+e.message+")");} stat.textContent=oldStat;},
       
       parseAndExecuteActions: function(text) {
           var result = { cleanText: text, calendarCreated: false, grimoireCreated: false };
@@ -640,23 +639,23 @@
           if(result.calendarCreated && result.grimoireCreated) {
               result.cleanText += "\n\nâœ¨ Chronik und Grimoire wurden beschrieben!";
           } else if(result.calendarCreated) {
-              result.cleanText += "\n\nâœ¨ Ein Eintrag wurde in die Chronik gegeben!";
+              result.cleanText += "\n\nâœ¨ Ein Eintrag wurde in die Chronik gebannt!";
           } else if(result.grimoireCreated) {
               result.cleanText += "\n\nðŸ“œ Das Grimoire wurde beschrieben!";
           }
-          Ergebnis zurückgeben;
+          return result;
       },
       log: function(q,a){ var rank=this.getRankName(); var maxLog=RANK_SYSTEM[rank].maxCrystalLog; this.state.crystalLog.unshift({q:q,a:a,ts:formatDateTime(new Date())}); while(this.state.crystalLog.length>maxLog)this.state.crystalLog.pop(); localStorage.setItem("mc_crystal_log", JSON.stringify(this.state.crystalLog)); this.renderLog(); },
-      renderLog: function(){ var l=document.getElementById("crystal-log"); l.innerHTML=""; this.state.crystalLog.forEach(x=>{ var d=document.createElement("div"); d.className="list-item"; d.innerHTML=`<div><div class="item-text"><b>Du:</b> ${xq}</div><div class="item-text" style="color:#ddd;margin-top:4px;"><b>${DATA[this.state.av].n}:</b> ${xa}</div><div class="item-sub">${x.ts}</div></div>`; l.appendChild(d); }); },
+      renderLog: function(){ var l=document.getElementById("crystal-log"); l.innerHTML=""; this.state.crystalLog.forEach(x=>{ var d=document.createElement("div"); d.className="list-item"; d.innerHTML=`<div><div class="item-text"><b>Du:</b> ${x.q}</div><div class="item-text" style="color:#ddd;margin-top:4px;"><b>${DATA[this.state.av].n}:</b> ${x.a}</div><div class="item-sub">${x.ts}</div></div>`; l.appendChild(d); }); },
       
       renderFriends: function(){ var l=document.getElementById("crystal-friends"); l.innerHTML=""; this.state.friends.forEach((f,i)=>{ var d=document.createElement("div"); d.className="list-item"; d.innerHTML=`<div style="font-weight:bold;">${f}</div><div style="display:flex;gap:5px;"><button class="small-btn secondary" onclick="app.editFriend(${i}); app.playSound('click')">âœŽ</button><button class="small-btn danger" onclick="app.delFriend(${i}); app.playSound('click')">x</button></div>`; l.appendChild(d); }); },
       addFriendByName: function(){
           var input = document.getElementById("friend-name-input");
           var name = input.value.trim();
-          if(!name){ Alert("Bitte einen Namen eingeben."); zurückkehren; }
+          if(!name){ alert("Bitte einen Namen eingeben."); return; }
           var rank = this.getRankName(); var max = RANK_SYSTEM[rank].maxFriends;
           if(this.state.friends.length >= max){ alert("Gilde voll! (Max: "+max+")"); return; }
-          if(this.state.friends.indexOf(name) !== -1){ alarm(name+" ist bereits in deiner Gilde!"); zurückkehren; }
+          if(this.state.friends.indexOf(name) !== -1){ alert(name+" ist bereits in deiner Gilde!"); return; }
           this.state.friends.push(name);
           if(this.state.friends.length > this.state.maxFriendsHighscore){
               this.state.maxFriendsHighscore = this.state.friends.length;
@@ -668,8 +667,8 @@
           this.renderFriends();
       },
       inviteViaWhatsApp: function(){
-          var userName = this.state.userName || „Ein Reisender“;
-          var waText = "âš”ï¸ " + userName + " lÃ¤dt dich ein, der Gilde im Mystic Calendar beitreten! Lade die App und beginne dein Abenteuer: [LINK]";
+          var userName = this.state.userName || "Ein Reisender";
+          var waText = "âš”ï¸ " + userName + " lÃ¤dt dich ein, der Gilde im Mystic Calendar beizutreten! Lade die App und beginne dein Abenteuer: [LINK]";
           var waUrl = "https://wa.me/?text=" + encodeURIComponent(waText);
           window.open(waUrl, '_blank');
       },
