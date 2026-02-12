@@ -281,7 +281,7 @@
         provider: "worker"
     };
 
-    var FANTASY_BASE = "WICHTIG: Du antwortest IMMER im mittelalterlichen Fantasy-Stil. Verwende NIEMALS moderne Begriffe wie Computer, Algorithmus, Daten, System, Variable, Funktion, Analyse, Prozent, Technologie, App, Software, Server, Update, User, Digital. Ersetze moderne Konzepte durch Fantasy-Äquivalente (z.B. Wissen=Arkanes Wissen, Berechnung=Runenformel, Nachricht=Pergamentrolle, Freund=Gefährte, Speichern=In die Chronik bannen). Beginne JEDE Antwort mit einer kurzen kursiv-gedachten szenischen Beschreibung der Kristallkugel (1 Satz, z.B. wie sie leuchtet, sich verdunkelt, Bilder zeigt). Halte Antworten auf 3-6 Sätze. Antworte AUF DEUTSCH.\n\nAKTIONEN: Wenn der Fragesteller dich bittet einen Termin/Eintrag zu erstellen, eine Erinnerung zu setzen oder etwas in den Kalender einzutragen, dann extrahiere die Infos und füge am ENDE deiner Antwort (nach einer Leerzeile) einen versteckten Befehl in genau diesem Format ein:\n[AKTION:KALENDER|titel|YYYY-MM-DD|HH:MM|notizen]\nBeispiel: Wenn jemand sagt 'Erinnere mich morgen um 15 Uhr an den Heiler' antworte im Fantasy-Stil und füge am Ende an:\n[AKTION:KALENDER|Besuch beim Heiler|2026-02-11|15:00|Vom Kristall gebannt]\nWenn kein Datum genannt wird, nutze das heutige Datum. Wenn keine Uhrzeit genannt wird, nutze 12:00. Das heutige Datum ist: ";
+    var FANTASY_BASE = "WICHTIG: Du antwortest IMMER im mittelalterlichen Fantasy-Stil. Verwende NIEMALS moderne Begriffe wie Computer, Algorithmus, Daten, System, Variable, Funktion, Analyse, Prozent, Technologie, App, Software, Server, Update, User, Digital. Ersetze moderne Konzepte durch Fantasy-Äquivalente (z.B. Wissen=Arkanes Wissen, Berechnung=Runenformel, Nachricht=Pergamentrolle, Freund=Gefährte, Speichern=In die Chronik bannen). Beginne JEDE Antwort mit einer kurzen kursiv-gedachten szenischen Beschreibung der Kristallkugel (1 Satz). Halte Antworten KURZ: maximal 2-3 Sätze nach der Szenenbeschreibung. Antworte AUF DEUTSCH.\n\nAKTIONEN - EXTREM WICHTIG: Du MUSST bei jeder passenden Anfrage den Aktions-Tag EXAKT in diesem Format am Ende einfügen. KEIN Tag = KEIN Eintrag!\n\n1) KALENDER-EINTRAG: Wenn der Fragesteller einen Termin, eine Erinnerung oder einen Kalendereintrag will:\n[AKTION:KALENDER|titel|YYYY-MM-DD|HH:MM|notizen]\nBeispiel: 'Erinnere mich morgen um 15 Uhr an den Heiler'\n[AKTION:KALENDER|Besuch beim Heiler|2026-02-13|15:00|Vom Kristall gebannt]\n\n2) GRIMOIRE-EINTRAG: Wenn der Fragesteller etwas ins Grimoire/Tagebuch/Buch schreiben will, eine Idee notieren will, oder sagt 'schreib auf', 'notiere', 'merk dir':\n[AKTION:GRIMOIRE|Der Text der ins Grimoire geschrieben werden soll]\nBeispiel: 'Schreib ins Grimoire dass ich Blumen kaufen muss'\n[AKTION:GRIMOIRE|Vergiss nicht, Blumen fuer deine Liebste zu besorgen, ehe der Mond sich wandelt.]\nDer Grimoire-Text soll im Fantasy-Stil geschrieben sein, kurz (1-2 Saetze).\n\nWenn kein Datum genannt wird, nutze das heutige Datum. Wenn keine Uhrzeit genannt wird, nutze 12:00. Das heutige Datum ist: ";
 
     var RANK_SYSTEM = {
         "Novize": { minLvl: 0, dailyAskLimit: 10, shareLimit: 10, maxFriends: 10, maxGrimoire: 9999, maxCrystalLog: 10 },
@@ -608,10 +608,10 @@
           return ctx || "Keine Termine in den nächsten 7 Tagen.";
       },
 
-      askCrystal: async function() { var qEl=document.getElementById("crystal-question"); var q=qEl.value.trim(); if(!q)return; var tStr=new Date().toISOString().split('T')[0]; if(this.state.dailyAsks.date!==tStr){this.state.dailyAsks={date:tStr,count:0};} var rank=this.getRankName(); var limit=RANK_SYSTEM[rank].dailyAskLimit; if(this.state.dailyAsks.count>=limit){this.log(q, "🛑 "+LIMIT_MESSAGES[rank][this.state.av.toLowerCase()]); qEl.value=""; return;} qEl.value=""; var stat=document.getElementById("crystal-status"); var oldStat=stat.textContent; stat.textContent="🔮 Die Kugel glüht..."; if(AI_CONFIG.apiUrl.includes("DEIN-NAME")){this.log(q,"⚠️ Schlüssel der Macht fehlt! Trage deine Worker-URL in AI_CONFIG ein.");stat.textContent=oldStat;return;} this.addXP(1); this.state.dailyAsks.count++; localStorage.setItem("mc_daily_asks", JSON.stringify(this.state.dailyAsks)); try{ var av=DATA[this.state.av]; var userName=this.state.userName||"Reisender"; var rankName=this.getRankName(); var today=new Date(); var todayStr=today.getFullYear()+"-"+pad2(today.getMonth()+1)+"-"+pad2(today.getDate()); var tomorrow=new Date(today); tomorrow.setDate(tomorrow.getDate()+1); var tomorrowStr=tomorrow.getFullYear()+"-"+pad2(tomorrow.getMonth()+1)+"-"+pad2(tomorrow.getDate()); var calCtx=this.getCalendarContext(); var fullPersona=av.persona+todayStr+" (Morgen: "+tomorrowStr+"). Der Fragesteller heißt "+userName+" und trägt den Rang '"+rankName+"'. Passe deine Anrede entsprechend an.\n\nKALENDER-WISSEN: Wenn der Fragesteller nach Terminen, dem Tagesplan, oder was ansteht fragt, nutze folgende Informationen aus seiner Chronik und beschreibe sie im Fantasy-Stil: "+calCtx; var res=await fetch(AI_CONFIG.apiUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contents:[{role:"user",parts:[{text:q}]}],systemInstruction:{parts:[{text:fullPersona}]},generationConfig:{temperature:0.8,maxOutputTokens:400}})}); var data=await res.json(); if(data.candidates && data.candidates[0] && data.candidates[0].content){ var fullText=data.candidates[0].content.parts[0].text; var actionResult=this.parseAndExecuteActions(fullText); var displayText=actionResult.cleanText; this.log(q,displayText); if(actionResult.calendarCreated){ this.playSound('enter'); } }else if(data.error){throw new Error(data.error.message||"Kristall schweigt");}else{throw new Error("Keine Antwort");} }catch(e){this.log(q,"Der Nebel verschlingt die Vision... ("+e.message+")");} stat.textContent=oldStat;},
+      askCrystal: async function() { var qEl=document.getElementById("crystal-question"); var q=qEl.value.trim(); if(!q)return; var tStr=new Date().toISOString().split('T')[0]; if(this.state.dailyAsks.date!==tStr){this.state.dailyAsks={date:tStr,count:0};} var rank=this.getRankName(); var limit=RANK_SYSTEM[rank].dailyAskLimit; if(this.state.dailyAsks.count>=limit){this.log(q, "🛑 "+LIMIT_MESSAGES[rank][this.state.av.toLowerCase()]); qEl.value=""; return;} qEl.value=""; var stat=document.getElementById("crystal-status"); var oldStat=stat.textContent; stat.textContent="🔮 Die Kugel glüht..."; if(AI_CONFIG.apiUrl.includes("DEIN-NAME")){this.log(q,"⚠️ Schlüssel der Macht fehlt! Trage deine Worker-URL in AI_CONFIG ein.");stat.textContent=oldStat;return;} this.addXP(1); this.state.dailyAsks.count++; localStorage.setItem("mc_daily_asks", JSON.stringify(this.state.dailyAsks)); try{ var av=DATA[this.state.av]; var userName=this.state.userName||"Reisender"; var rankName=this.getRankName(); var today=new Date(); var todayStr=today.getFullYear()+"-"+pad2(today.getMonth()+1)+"-"+pad2(today.getDate()); var tomorrow=new Date(today); tomorrow.setDate(tomorrow.getDate()+1); var tomorrowStr=tomorrow.getFullYear()+"-"+pad2(tomorrow.getMonth()+1)+"-"+pad2(tomorrow.getDate()); var calCtx=this.getCalendarContext(); var fullPersona=av.persona+todayStr+" (Morgen: "+tomorrowStr+"). Der Fragesteller heißt "+userName+" und trägt den Rang '"+rankName+"'. Passe deine Anrede entsprechend an.\n\nKALENDER-WISSEN: Wenn der Fragesteller nach Terminen, dem Tagesplan, oder was ansteht fragt, nutze folgende Informationen aus seiner Chronik und beschreibe sie im Fantasy-Stil: "+calCtx; var res=await fetch(AI_CONFIG.apiUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contents:[{role:"user",parts:[{text:q}]}],systemInstruction:{parts:[{text:fullPersona}]},generationConfig:{temperature:0.8,maxOutputTokens:250}})}); var data=await res.json(); if(data.candidates && data.candidates[0] && data.candidates[0].content){ var fullText=data.candidates[0].content.parts[0].text; var actionResult=this.parseAndExecuteActions(fullText); var displayText=actionResult.cleanText; this.log(q,displayText); if(actionResult.calendarCreated || actionResult.grimoireCreated){ this.playSound('enter'); } }else if(data.error){throw new Error(data.error.message||"Kristall schweigt");}else{throw new Error("Keine Antwort");} }catch(e){this.log(q,"Der Nebel verschlingt die Vision... ("+e.message+")");} stat.textContent=oldStat;},
       
       parseAndExecuteActions: function(text) {
-          var result = { cleanText: text, calendarCreated: false };
+          var result = { cleanText: text, calendarCreated: false, grimoireCreated: false };
           var calRegex = /\[AKTION:KALENDER\|([^|]*)\|([^|]*)\|([^|]*)\|([^\]]*)\]/g;
           var match;
           while((match = calRegex.exec(text)) !== null) {
@@ -619,7 +619,6 @@
               var date = match[2].trim();
               var time = match[3].trim();
               var notes = match[4].trim();
-              // Validate date format
               if(/^\d{4}-\d{2}-\d{2}$/.test(date) && title) {
                   if(!this.state.events[date]) this.state.events[date] = [];
                   this.state.events[date].push({ title: title, time: time, notes: notes, shared: false, fromCrystal: true });
@@ -627,10 +626,25 @@
                   result.calendarCreated = true;
               }
           }
-          // Remove action tags from displayed text
+          var grimRegex = /\[AKTION:GRIMOIRE\|([^\]]*)\]/g;
+          var grimMatch;
+          while((grimMatch = grimRegex.exec(text)) !== null) {
+              var grimText = grimMatch[1].trim();
+              if(grimText) {
+                  var now = new Date();
+                  var ts = now.getFullYear()+"-"+pad2(now.getMonth()+1)+"-"+pad2(now.getDate())+" "+pad2(now.getHours())+":"+pad2(now.getMinutes());
+                  this.state.grimoire.unshift({ text: grimText, ts: ts, fromCrystal: true });
+                  localStorage.setItem("mc_grimoire", JSON.stringify(this.state.grimoire));
+                  result.grimoireCreated = true;
+              }
+          }
           result.cleanText = text.replace(/\n?\[AKTION:[^\]]*\]/g, "").trim();
-          if(result.calendarCreated) {
+          if(result.calendarCreated && result.grimoireCreated) {
+              result.cleanText += "\n\n✨ Chronik und Grimoire wurden beschrieben!";
+          } else if(result.calendarCreated) {
               result.cleanText += "\n\n✨ Ein Eintrag wurde in die Chronik gebannt!";
+          } else if(result.grimoireCreated) {
+              result.cleanText += "\n\n📜 Das Grimoire wurde beschrieben!";
           }
           return result;
       },
