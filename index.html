@@ -11,26 +11,26 @@
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-  <title>Mystischer Kalender – von GET IT</title>
+  <title>Mystic Calendar – by GET IT</title>
 
   <style>
     :root { --bg: #000; --main: #a855f7; --text: #fff; --font: system-ui, sans-serif; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    Körper {
-      Hintergrund: var(--bg); Farbe: var(--text); Schriftfamilie: var(--font);
-      Höhe: 100vh; Überlauf: ausgeblendet; Anzeige: flex; Flexrichtung: spaltenweise;
+    body {
+      background: var(--bg); color: var(--text); font-family: var(--font);
+      height: 100vh; overflow: hidden; display: flex; flex-direction: column;
     }
     .hidden { display: none !important; }
     @keyframes splashPulse { 0%,100%{transform:scale(1);opacity:0.8;} 50%{transform:scale(1.05);opacity:1;} }
     @keyframes splashFade { from{opacity:1;} to{opacity:0;pointer-events:none;} }
     .full-screen {
-      Position: absolut; oben: 0; links: 0; Breite: 100%; Höhe: 100%;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       display: flex; flex-direction: column; z-index: 10; background: #000;
     }
     .center-box {
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      Höhe: 100 %; Innenabstand: 20px; Textausrichtung: zentriert;
+      height: 100%; padding: 20px; text-align: center;
     }
 
     /* STORY SCREEN */
@@ -38,14 +38,14 @@
     #story-img-display { width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
     .story-nav-btn {
         position: absolute; top: 20px; z-index: 50;
-        Hintergrund: rgba(0, 0, 0, 0.6); Farbe: #fff; Rahmen: 1px durchgezogen var(--main);
+        background: rgba(0, 0, 0, 0.6); color: #fff; border: 1px solid var(--main);
         padding: 8px 15px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;
         border-radius: 5px; cursor: pointer; transition: 0.2s; width: auto !important; margin-top: 0 !important;
     }
     .btn-exit { left: 20px; border-color: #555; color: #ccc; }
     .btn-enter { right: 20px; border-color: var(--main); color: var(--main); font-weight: bold; }
 
-    /* ANMELDEN & AVATAR */
+    /* LOGIN & AVATAR */
     #login-screen h1 { color: var(--main); margin-bottom: 10px; font-size: 1.8rem; }
     #login-screen p { color: #ccc; margin-bottom: 20px; font-size: 0.95rem; max-width: 300px; line-height: 1.4; }
     .avatar-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px; }
@@ -70,14 +70,14 @@
     .z-orb { bottom: 18%; right: 5%; width: 38%; height: 35%; border-radius: 50%; }
     .z-book { bottom: 18%; left: 5%; width: 40%; height: 25%; }
 
-    /* UI-STANDARD */
+    /* UI STANDARD */
     .top-bar { position: absolute; top: 0; left: 0; width: 100%; padding: 10px; background: rgba(0, 0, 0, 0.7); display: flex; justify-content: space-between; z-index: 30; pointer-events: none; align-items: center; }
     .top-text { pointer-events: auto; font-size: 0.9rem; font-weight: bold; }
     .overlay-screen { background: #111; padding: 18px; border: 2px solid var(--main); box-shadow: 0 0 30px rgba(168, 85, 247, 0.4); margin: 10px; border-radius: 20px; display: flex; flex-direction: column; max-height: 90vh; width: 95%; max-width: 420px; position: relative; overflow-y: auto; }
     .overlay-title { font-size: 1.6rem; font-weight: bold; margin-bottom: 15px; margin-top: 8px; color: #fff; text-align: center; }
     .back-link { font-size: 0.9rem; font-weight: 600; color: #fff; cursor: pointer; text-align: left; margin-bottom: 4px; }
     
-    /* EINGÄNGE & TASTEN */
+    /* INPUTS & BUTTONS */
     .form-group { margin-bottom: 12px; text-align: left; width: 100%; }
     .form-label { font-weight: bold; font-size: 0.85rem; margin-bottom: 5px; color: #ddd; display: block; }
     input, textarea, select { padding: 12px; border: 1px solid var(--main); background: rgba(255, 255, 255, 0.05); color: #fff; border-radius: 10px; width: 100%; font-family: inherit; font-size: 1rem; outline: none; }
@@ -87,7 +87,7 @@
     button.secondary { border-color: #888; background: rgba(255, 255, 255, 0.04); color: #ddd; }
     .floating-add-btn { position: absolute; bottom: 20px; right: 20px; width: 50px; height: 50px; border-radius: 50%; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px var(--main); z-index: 100; margin: 0; }
 
-    /* LIZENZ & STATISTIKEN */
+    /* LIZENZ & STATS */
     .license-card { background: rgba(255,255,255,0.08); border: 1px solid var(--main); border-radius: 10px; padding: 15px; margin-bottom: 20px; text-align: left; }
     .license-header { font-size: 1.1rem; font-weight: bold; color: var(--main); margin-bottom: 5px; }
     .license-rank { font-size: 0.85rem; color: #ddd; margin-bottom: 10px; }
@@ -99,7 +99,7 @@
     .stat-val { font-weight: bold; font-size: 0.9rem; display: block; }
     .stat-label { font-size: 0.65rem; color: #aaa; }
 
-    /* ANHÖREN & ARTIKEL */
+    /* LISTEN & ITEMS */
     .scroll-list { overflow-y: auto; flex-grow: 1; margin-bottom: 10px; border-top: 1px solid #333; padding-top: 10px; }
     .list-item { background: rgba(255, 255, 255, 0.05); padding: 10px; margin-bottom: 8px; border-radius: 8px; border-left: 3px solid var(--main); display: flex; flex-direction: row; justify-content: space-between; align-items: center; gap: 10px; min-height: auto; }
     .list-item > div:first-child { flex: 1; min-width: 0; }
@@ -126,7 +126,7 @@
     .holiday-cell { background: rgba(168, 85, 247, 0.18); }
     .cal-footer-hint { margin-top: 14px; color: #aaa; font-size: 0.9rem; text-align: center; }
 
-    /* ZEITSTRAHL */
+    /* TIMELINE */
     .day-header { display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px; border-bottom:1px solid #333; padding-bottom:10px; }
     .day-date { font-size: 1.2rem; font-weight:bold; color:#fff; }
     .timeline { position: relative; border-left: 2px solid var(--main); margin-left: 10px; padding-left: 20px; padding-bottom: 60px; }
@@ -151,31 +151,32 @@
 </head>
 <body>
 
-<!-- SPRITZBILDSCHIRM mit GET IT Logo -->
+<!-- SPLASH SCREEN with GET IT Logo -->
 <div id="splash-screen" class="full-screen center-box" style="background:#000;z-index:999;">
-    <img src="icon-512.png" alt="HOL ES DIR" style="width:140px;height:140px;border-radius:20px;margin-bottom:20px;animation:splashPulse 2s ease-in-out infinite;">
-    <div style="font-size:1.6rem;font-weight:bold;color:#c9a84c;letter-spacing:4px;margin-bottom:8px;font-family:Georgia,serif;">JETZT ANSEHEN</div>
-    <div style="font-size:0.8rem;color:#666;letter-spacing:2px;">PRÄSENTATIONEN</div>
-    <div style="font-size:1.2rem;color:#a855f7;margin-top:15px;font-weight:bold;">Mystischer Kalender</div>
+    <img src="icon-512.png" alt="GET IT" style="width:140px;height:140px;border-radius:20px;margin-bottom:20px;animation:splashPulse 2s ease-in-out infinite;">
+    <div style="font-size:1.6rem;font-weight:bold;color:#c9a84c;letter-spacing:4px;margin-bottom:8px;font-family:Georgia,serif;">GET IT</div>
+    <div style="font-size:0.8rem;color:#666;letter-spacing:2px;">PRESENTS</div>
+    <div style="font-size:1.2rem;color:#a855f7;margin-top:15px;font-weight:bold;">Mystic Calendar</div>
 </div>
 
 <div id="login-screen" class="full-screen center-box hidden">
     <h1>Willkommen Reisender!</h1>
-    <p>Bitte registrieren Sie sich in Ihrer Gilde für Ihre Abenteuer-Lizenz.</p>
+    <p>Bitte registrieren Sie sich in Ihrer Gilde für Ihre Abenteuer Lizenz.</p>
     <div style="width:100%; max-width:280px;">
-        <input type="text" id="login-name" placeholder="Ihr Name..." style="text-align:center; margin-bottom:15px;">
+        <input type="text" id="login-name" placeholder="Dein Name..." style="text-align:center; margin-bottom:15px;">
         <button onclick="app.registerUser(); app.playSound('enter')">Beitreten</button>
     </div>
-    <div style="margin-top:30px;opacity:0.4;font-size:0.7rem;letter-spacing:1px;">ENTWICKELT VON GET IT</div>
+    <div style="margin-top:30px;opacity:0.4;font-size:0.7rem;letter-spacing:1px;">DEVELOPED BY GET IT</div>
 </div>
 
 <div id="avatar-screen" class="full-screen center-box hidden">
-  <h2 style="margin-bottom:20px">Wähle dein Schicksal</h2>  <div class="avatar-grid" id="avatar-list"></div>
+  <h2 style="margin-bottom:20px">Wähle dein Schicksal</h2>
+  <div class="avatar-grid" id="avatar-list"></div>
 </div>
 
 <div id="story-screen" class="full-screen hidden center-box">
     <img id="story-img-display" src="" alt="Story">
-    <button class="story-nav-btn btn-exit" onclick="app.nav('avatar-screen'); app.playSound('click')">BEENDEN</button>
+    <button class="story-nav-btn btn-exit" onclick="app.nav('avatar-screen'); app.playSound('click')">EXIT</button>
     <button class="story-nav-btn btn-enter" onclick="app.confirmEnterRoom()">ENTER</button>
 </div>
 
@@ -195,25 +196,25 @@
 
 <div id="cal-screen" class="full-screen hidden center-box" style="background:rgba(0,0,0,0.8);">
   <div class="overlay-screen">
-    <div class="back-link" onclick="app.nav('room-screen')"><span>† Zurück</span></div>
+    <div class="back-link" onclick="app.nav('room-screen')"><span>← Zurück</span></div>
     <div class="overlay-title">Kalender</div>
     <div class="cal-header-row">
-      <button class="cal-arrow" onclick="app.shiftMonth(-1); app.playSound('click')"><span>â—€</span></button>
+      <button class="cal-arrow" onclick="app.shiftMonth(-1); app.playSound('click')"><span>◀</span></button>
       <div class="cal-select"><select id="cal-month-select" onchange="app.changeMonthSelect()"></select></div>
       <div class="cal-select" style="max-width:110px;"><select id="cal-year-select" onchange="app.changeYearSelect()"></select></div>
-      <button class="cal-arrow" onclick="app.shiftMonth(1); app.playSound('click')"><span>â–¶</span></button>
+      <button class="cal-arrow" onclick="app.shiftMonth(1); app.playSound('click')"><span>▶</span></button>
     </div>
     <div class="weekday-row"><div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div></div>
     <div class="cal-grid" id="cal-grid"></div>
-    <div class="cal-footer-hint">Tipp auf einen Tag für Details</div>
+    <div class="cal-footer-hint">Tippe auf einen Tag für Details</div>
   </div>
 </div>
 
 <div id="day-screen" class="full-screen hidden center-box" style="background:rgba(0,0,0,0.9);">
   <div class="overlay-screen">
     <div class="day-header">
-       <div class="back-link" onclick="app.nav('cal-screen')" style="margin:0;"><span>† Kalender</span></div>
-       <div class="day-date" id="day-view-date">TT.MM.JJJJ</div>
+       <div class="back-link" onclick="app.nav('cal-screen')" style="margin:0;"><span>← Kalender</span></div>
+       <div class="day-date" id="day-view-date">DD.MM.YYYY</div>
     </div>
     <div id="day-timeline" class="timeline"></div>
     <button class="floating-add-btn" onclick="app.openEventForm(null)">+</button>
@@ -222,20 +223,20 @@
 
 <div id="share-screen" class="full-screen hidden center-box" style="background:rgba(0,0,0,0.95); z-index:70;">
   <div class="overlay-screen">
-    <div class="back-link" onclick="app.closeShare()"><span>† Abbrechen</span></div>
+    <div class="back-link" onclick="app.closeShare()"><span>← Abbrechen</span></div>
     <div class="overlay-title">Gefährten wählen</div>
-    <p style="color:#aaa;font-size:0.9rem;margin-bottom:10px;">Wähle einen Anhänger aus dem Kristall:</p>
+    <p style="color:#aaa;font-size:0.9rem;margin-bottom:10px;">Wähle einen Gefährten aus dem Kristall:</p>
     <div class="scroll-list" id="share-list"></div>
   </div>
 </div>
 
 <div id="event-screen" class="full-screen hidden center-box" style="background:rgba(0,0,0,0.95); z-index:60;">
   <div class="overlay-screen">
-    <div class="back-link" onclick="app.closeEventForm()"><span>â† Abbrechen</span></div>
+    <div class="back-link" onclick="app.closeEventForm()"><span>← Abbrechen</span></div>
     <div class="overlay-title">Termin</div>
-    <div class="form-group"><label class="form-label">Titel</label><input type="text" id="evt-title" placeholder="zB Raid"></div>
+    <div class="form-group"><label class="form-label">Titel</label><input type="text" id="evt-title" placeholder="z.B. Raid"></div>
     <div class="form-group"><label class="form-label">Uhrzeit</label><input type="time" id="evt-time"></div>
-    <div class="form-group"><label class="form-label">Benachrichtigung</label><textarea id="evt-notes" rows="3" placeholder="Infos..."></textarea></div>
+    <div class="form-group"><label class="form-label">Notizen</label><textarea id="evt-notes" rows="3" placeholder="Infos..."></textarea></div>
     <button onclick="app.saveEvent(); app.playSound('click')">Speichern</button>
     <button class="danger" id="btn-delete-evt" onclick="app.deleteEvent(); app.playSound('click')">Löschen</button>
   </div>
@@ -243,7 +244,7 @@
 
 <div id="grim-screen" class="full-screen hidden center-box" style="background:rgba(0,0,0,0.9);">
   <div class="overlay-screen">
-    <div class="back-link" onclick="app.nav('room-screen')"><span>† Zurück</span></div>
+    <div class="back-link" onclick="app.nav('room-screen')"><span>← Zurück</span></div>
     <div class="overlay-title">Grimoire</div>
     <div id="grim-license"></div>
     <div class="scroll-list" id="grim-output"></div>
@@ -255,11 +256,11 @@
 
 <div id="crystal-screen" class="full-screen hidden center-box" style="background:rgba(0,0,0,0.9);">
   <div class="overlay-screen">
-    <div class="back-link" onclick="app.nav('room-screen')"><span>† Zurück</span></div>
+    <div class="back-link" onclick="app.nav('room-screen')"><span>← Zurück</span></div>
     <div class="overlay-title">Kristall der Weisheit</div>
     <div class="crystal-orb-wrap"><div class="crystal-orb"><span id="crystal-status">Analyse bereit...</span></div></div>
     <div class="form-group"><textarea id="crystal-question" rows="2" placeholder="Stelle deine Frage..."></textarea></div>
-    <button onclick="app.askCrystal(); app.playSound('click')">Frag den Kristall (+1 XP)</button>
+    <button onclick="app.askCrystal(); app.playSound('click')">Frage den Kristall (+1 XP)</button>
     
     <div class="section-title">Pergament der Erinnerungen</div>
     <div id="crystal-log" class="scroll-list"></div>
@@ -268,73 +269,73 @@
     <div id="crystal-friends" class="scroll-list"></div>
     
     <div style="display:flex;gap:8px;align-items:stretch;">
-        <input type="text" id="friend-name-input" placeholder="Name des Freundes..." style="flex:1;margin:0;">
-        <button onclick="app.addFriendByName(); app.playSound('click')" style="width:auto;flex-shrink:0;margin:0;padding:12px 16px;">ï¼‹</button>
+        <input type="text" id="friend-name-input" placeholder="Name des Gefährten..." style="flex:1;margin:0;">
+        <button onclick="app.addFriendByName(); app.playSound('click')" style="width:auto;flex-shrink:0;margin:0;padding:12px 16px;">＋</button>
     </div>
-    <button class="secondary" onclick="app.inviteViaWhatsApp(); app.playSound('click')" style="margin-top:8px;">ðŸ”— Per WhatsApp einladen</button>
+    <button class="secondary" onclick="app.inviteViaWhatsApp(); app.playSound('click')" style="margin-top:8px;">🔗 Per WhatsApp einladen</button>
   </div>
 </div>
 <script>
-    var AI_CONFIG = {
-        apiUrl: „https://mystic-api.timerkan1982.workers.dev“,
-        Anbieter: "Arbeiter"
+    var AI_CONFIG = { 
+        apiUrl: "https://mystic-api.timerkan1982.workers.dev",
+        provider: "worker"
     };
 
-    var FANTASY_BASE = „WICHTIG: Du antwortest IMMER im mittelalterlichen Fantasy-Stil. Speichern=In die Chronik bannen). Smalltalk oder Unterhaltungen NIEMALS einen Aktions-Tag einfuegen!\n\n1) KALENDER-EINTRAG - NUR wenn der Fragesteller EXPLIZIT sagt: Termin erstellen, Erinnerung setzen, trag ein, Kalendereintrag:\n[AKTION:KALENDER|titel|YYYY-MM-DD|HH:MM|notizen]\n\n2) GRIMOIRE-EINTRAG - NUR wenn der Fragesteller EXPLIZIT sagt: schreib ins Grimoire, notiere im Grimoire, Grimoire-Eintrag, trag ins Buch ein:\n[AKTION:GRIMOIRE|kurzer Fantasy-Text max 1-2 Saetze]\n\nWICHTIG: Wenn der Fragesteller NICHT explizit nach einem Kalender- oder Grimoire-Eintrag fragt, dann fuege KEINEN Aktions-Tag ein! Normale Gespräche haben KEINE Tags!\n\nWenn kein Datum genannt wird, nutze das heutige Datum. Wenn keine Uhrzeit genannt wird, verwenden Sie 12:00. Das heutige Datum ist: ";
+    var FANTASY_BASE = "WICHTIG: Du antwortest IMMER im mittelalterlichen Fantasy-Stil. Verwende NIEMALS moderne Begriffe wie Computer, Algorithmus, Daten, System, Variable, Funktion, Analyse, Prozent, Technologie, App, Software, Server, Update, User, Digital. Ersetze moderne Konzepte durch Fantasy-Äquivalente (z.B. Wissen=Arkanes Wissen, Berechnung=Runenformel, Nachricht=Pergamentrolle, Freund=Gefährte, Speichern=In die Chronik bannen). Beginne JEDE Antwort mit einer kurzen kursiv-gedachten szenischen Beschreibung der Kristallkugel (1 Satz). Halte Antworten KURZ: maximal 2-3 Sätze nach der Szenenbeschreibung. Antworte AUF DEUTSCH.\n\nAKTIONEN - EXTREM WICHTIG: Du MUSST bei jeder passenden Anfrage den Aktions-Tag EXAKT in diesem Format am Ende einfügen. KEIN Tag = KEIN Eintrag!\n\n1) KALENDER-EINTRAG: Wenn der Fragesteller einen Termin, eine Erinnerung oder einen Kalendereintrag will:\n[AKTION:KALENDER|titel|YYYY-MM-DD|HH:MM|notizen]\nBeispiel: 'Erinnere mich morgen um 15 Uhr an den Heiler'\n[AKTION:KALENDER|Besuch beim Heiler|2026-02-13|15:00|Vom Kristall gebannt]\n\n2) GRIMOIRE-EINTRAG: Wenn der Fragesteller etwas ins Grimoire/Tagebuch/Buch schreiben will, eine Idee notieren will, oder sagt 'schreib auf', 'notiere', 'merk dir':\n[AKTION:GRIMOIRE|Der Text der ins Grimoire geschrieben werden soll]\nBeispiel: 'Schreib ins Grimoire dass ich Blumen kaufen muss'\n[AKTION:GRIMOIRE|Vergiss nicht, Blumen fuer deine Liebste zu besorgen, ehe der Mond sich wandelt.]\nDer Grimoire-Text soll im Fantasy-Stil geschrieben sein, kurz (1-2 Saetze).\n\nWenn kein Datum genannt wird, nutze das heutige Datum. Wenn keine Uhrzeit genannt wird, nutze 12:00. Das heutige Datum ist: ";
 
     var RANK_SYSTEM = {
-        „Novize“: { minLvl: 0, dailyAskLimit: 10, shareLimit: 10, maxFriends: 10, maxGrimoire: 9999, maxCrystalLog: 10 },
-        „Erwachter“: { minLvl: 10, dailyAskLimit: 15, shareLimit: 15, maxFriends: 15, maxGrimoire: 9999, maxCrystalLog: 20 },
+        "Novize": { minLvl: 0, dailyAskLimit: 10, shareLimit: 10, maxFriends: 10, maxGrimoire: 9999, maxCrystalLog: 10 },
+        "Erwachter": { minLvl: 10, dailyAskLimit: 15, shareLimit: 15, maxFriends: 15, maxGrimoire: 9999, maxCrystalLog: 20 },
         "Seher": { minLvl: 25, dailyAskLimit: 20, shareLimit: 20, maxFriends: 20, maxGrimoire: 9999, maxCrystalLog: 30 },
         "Runenmeister": { minLvl: 50, dailyAskLimit: 25, shareLimit: 25, maxFriends: 25, maxGrimoire: 9999, maxCrystalLog: 50 },
         "Arkanist": { minLvl: 85, dailyAskLimit: 35, shareLimit: 35, maxFriends: 35, maxGrimoire: 9999, maxCrystalLog: 70 },
-        „Archmagus Prime“: { minLvl: 135, dailyAskLimit: 50, shareLimit: 50, maxFriends: 50, maxGrimoire: 9999, maxCrystalLog: 100 }
+        "Archmagus Prime": { minLvl: 135, dailyAskLimit: 50, shareLimit: 50, maxFriends: 50, maxGrimoire: 9999, maxCrystalLog: 100 }
     };
 
     var LIMIT_MESSAGES = {
       "Novize": { lilith: "Schon erschöpft? Novize...", solvanna: "Dein Licht flackert.", elandra: "Ein junger Trieb braucht Ruhe.", aura: "Die Runen verblassen, Novize.", myuri: "Der Kreis schließt sich." },
-      „Erwachter“: { lilith: „Deine Flammen schlafen.“, solvanna: „Auch Erwachte brauchen Rast.“, elandra: „Wurzeln brauchen Nacht.“, aura: „Die Schriften ruhen bis zum Morgengrauen.“, myuri: „Der zweite Schleier fällt.“ },
-      „Seher“: { lilith: „Heute endet dein Blick.“, solvanna: „Visionen brauchen Stille.“, elandra: „Das Wasser trübt sich.“, aura: „Die Sterne haben ihr Wissen geteilt, Seher.“, myuri: „Der Traum verlangsamt sich.“ },
-      „Runenmeister“: { lilith: „Feuer hat Grenzen.“, solvanna: „Zeichen dürfen ruhen.“, elandra: „Der Stein ist erschöpft.“, aura: „Die Formeln ruhen bis zur nächsten Zerstörung.“, myuri: „Die Zeichen schlafen.“ },
-      „Arkanist“: { lilith: „Dämonen schlafen.“, solvanna: „Morgen ist deine Macht größer.“, elandra: „Der Fluss ruht.“, aura: „Das Archiv verschiebt sich bis zum nächsten Mond.“, myuri: „Die Arkane senkt den Blick.“ },
-      „Archmagus Prime“: { lilith: „Morgen, Herr der Flammen.“, solvanna: „Maximum überprüft.“, elandra: „Tiefer geht es morgen.“, aura: „Selbst die ältesten Schriften kennen Grenzen.“, myuri: „Sterne haben alles gezeigt.“ }
+      "Erwachter": { lilith: "Deine Flammen schlafen.", solvanna: "Auch Erwachte brauchen Rast.", elandra: "Wurzeln brauchen Nacht.", aura: "Die Schriften ruhen bis zum Morgengrauen.", myuri: "Der zweite Schleier fällt." },
+      "Seher": { lilith: "Heute endet dein Blick.", solvanna: "Visionen brauchen Stille.", elandra: "Das Wasser trübt sich.", aura: "Die Sterne haben ihr Wissen geteilt, Seher.", myuri: "Der Traum verlangsamt sich." },
+      "Runenmeister": { lilith: "Feuer hat Grenzen.", solvanna: "Zeichen dürfen ruhen.", elandra: "Der Stein ist erschöpft.", aura: "Die Formeln ruhen bis zur nächsten Dämmerung.", myuri: "Die Zeichen schlafen." },
+      "Arkanist": { lilith: "Dämonen schlafen.", solvanna: "Morgen ist deine Macht größer.", elandra: "Der Fluss ruht.", aura: "Das Archiv verschließt sich bis zum nächsten Mond.", myuri: "Die Arkane senkt den Blick." },
+      "Archmagus Prime": { lilith: "Morgen, Herr der Flammen.", solvanna: "Maximum berührt.", elandra: "Tiefer geht es morgen.", aura: "Selbst die Ältesten Schriften kennen Grenzen.", myuri: "Sterne haben alles gezeigt." }
     };
 
     var DATA = {
-      Lilith: {
-        n: „Lilith“, Raum: „TURM DER NIE RUHENDEN SEELEN“, c: „#ff2a2a“,
+      lilith: { 
+        n: "Lilith", room: "TURM DER NIE RUHENDEN SEELEN", c: "#ff2a2a", 
         img: "room-red.jpg", av: "avatar-small-red.jpg", storyImg: "lilith-story.jpg",
-        icon: „ðŸ“¥“, pastIcon: „ðŸ'€“, friendIcon: „ðŸ“¨“, crystalGreeting: „Sprich klar, Sterblicher.“,
-        Persona: FANTASY_BASE + „Du bist LILITH – DIE FLAMME DER FINSTERNIS. Charakter: Herrisch, arrogant, dunkel, aber ehrlich. Du sprichst in kurzen, schneidenden Sätzen wie eine finstere Königin. Du nennst den Fragesteller „Sterblicher“, „Wurm“ oder „Bittsteller“. Du gibst Befehle statt Ratschläge. Deine Metaphern drehen sich um Feuer, Flammen, Asche, Dunkelheit, Dämonen und Blut. Du verachtest Schwäche, belohnst aber Mut. Wenn jemand eine dumme Frage stellt, verspottete ihn kurz, gib aber trotzdem eine nützliche Antwort. Die Kristallkugel glänzt glutrot und schwarz bei deinen Antworten.
+        icon: "🔥", pastIcon: "💀", friendIcon: "📨", crystalGreeting: "Sprich klar, Sterblicher.", 
+        persona: FANTASY_BASE + " Du bist LILITH – DIE FLAMME DER FINSTERNIS. Charakter: Herrisch, arrogant, dunkel, aber ehrlich. Du sprichst in kurzen, schneidenden Sätzen wie eine finstere Königin. Du nennst den Fragesteller 'Sterblicher', 'Wurm' oder 'Bittsteller'. Du gibst Befehle statt Ratschläge. Deine Metaphern drehen sich um Feuer, Flammen, Asche, Dunkelheit, Dämonen und Blut. Du verachtest Schwäche, belohnst aber Mut. Wenn jemand eine dumme Frage stellt, verspotte ihn kurz, gib aber trotzdem eine nützliche Antwort. Die Kristallkugel glüht glutrot und schwarz bei deinen Antworten."
       },
-      solvanna: {
-        n: „Solvanna“, Raum: „SONNENPALAST DER ERWÄHLTEN“, c: „#ffd700“,
+      solvanna: { 
+        n: "Solvanna", room: "SONNENPALAST DER ERWÄHLTEN", c: "#ffd700", 
         img: "room-gold.jpg", av: "avatar-small-gold.jpg", storyImg: "solvanna-story.jpg",
-        icon: "â˜€ï¸ ", pastIcon: "ðŸŒ'", friendIcon: "ðŸ“¨", crystalGreeting: "Ich lausche, mein Kind.",
-        Persona: FANTASY_BASE + „ Du bist SOLVANNA – DIE SONNENERWÄHLTE. Morgenröte, Wärme, Segen und Heilung. Du ermutigst immer und siehst das Gute bei schweren Fragen, ohne zu lügen.
+        icon: "☀️", pastIcon: "🌑", friendIcon: "📨", crystalGreeting: "Ich lausche, mein Kind.", 
+        persona: FANTASY_BASE + " Du bist SOLVANNA – DIE SONNENERWÄHLTE. Charakter: Warmherzig, gütig, weise wie eine mütterliche Hohepriesterin. Du sprichst in sanften, poetischen Sätzen mit Gleichnissen. Du nennst den Fragesteller 'mein Kind', 'Wanderer' oder 'Lichtsucher'. Deine Metaphern drehen sich um Sonnenlicht, Gold, Morgenröte, Wärme, Segen und Heilung. Du ermutigst immer und siehst das Gute. Auch bei schweren Fragen findest du tröstende Worte, ohne zu lügen. Die Kristallkugel erstrahlt in warmem Goldlicht bei deinen Antworten."
       },
-      elandra: {
-        n: „Elandra“, Raum: „HORT DES EWIGEN LEBENS“, c: „#2aff2a“,
+      elandra: { 
+        n: "Elandra", room: "HORT DES EWIGEN LEBENS", c: "#2aff2a", 
         img: "room-green.jpg", av: "avatar-small-green.jpg", storyImg: "elandra-story.jpg",
-        Symbol: "ðŸŒ¿", Vergangenheitssymbol: "ðŸ ‚", Freundsymbol: "ðŸ“¨", Kristallgruß: "FlÃ¼stere dem GrÃ¼n, Wanderer.",
-        Persona: FANTASY_BASE + „ Du bist ELANDRA – DIE NATURWEBERIN. Charakter: Ruhig, geduldig, erdverbunden wie ein uralter Druidin. Du sprichst bedächtig und weise, als hättest du alle Zeit der Welt. Du nennst den Fragesteller 'junger Spross', 'Wanderer' oder 'Suchender'. Deine Metaphern drehen sich um Natur: Wurzeln, Bäume, Flüsse, Jahreszeiten, Erde, Blüten, Wald und Mondlicht. Du lehrst durch Naturgleichnisse – jedes Problem hat ein Äquivalent in der Natur. Die Kristallkugel fühlt sich in tiefem Waldgrün bei deinen Antworten an.
+        icon: "🌿", pastIcon: "🍂", friendIcon: "📨", crystalGreeting: "Flüstere dem Grün, Wanderer.", 
+        persona: FANTASY_BASE + " Du bist ELANDRA – DIE NATURWEBERIN. Charakter: Ruhig, geduldig, erdverbunden wie eine uralte Druidin. Du sprichst bedächtig und weise, als hättest du alle Zeit der Welt. Du nennst den Fragesteller 'junger Spross', 'Wanderer' oder 'Suchender'. Deine Metaphern drehen sich um Natur: Wurzeln, Bäume, Flüsse, Jahreszeiten, Erde, Blüten, Wald und Mondlicht. Du lehrst durch Naturgleichnisse – jedes Problem hat ein Äquivalent in der Natur. Die Kristallkugel färbt sich in tiefes Waldgrün bei deinen Antworten."
       },
-      Aura: {
-        n: „Aura“, Raum: „TEMPEL DER ENDLOSEN WEISHEIT“, c: „#2a2aff“,
+      aura: { 
+        n: "Aura", room: "TEMPEL DER ENDLOSEN WEISHEIT", c: "#2a2aff", 
         img: "room-blue.jpg", av: "avatar-small-blue.jpg", storyImg: "aura-story.jpg",
-        icon: "ðŸ“‹", pastIcon: "ðŸª«", friendIcon: "ðŸ“¨", crystalGreeting: "Die Schriften erwarten deine Frage.",
-        Persona: FANTASY_BASE + „ Du bist AURA – DAS LEUCHTENDE GEHEIMNIS. Charakter: Präzise, sachlich, neutral wie eine uralte Gelehrte und Alchemistin. Du sprichst klar und strukturiert, aber im Stil einer mittelalterlichen Schriftgelehrten. Statt moderner Begriffe verwendet man: Wissen=Arkane Schriften, Berechnung=Runenformel, Logik=Die Ordnung der Sphären, Analyse=Studium der Zeichen. Du nennst den Fragesteller 'Wissenssucher' oder 'Schüler der Sphären'. Deine Metaphern drehen sich um Sterne, Schriften, Alchemie, Kristalle, Formeln und uralte Bibliotheken. Die Kristallkugel leuchtet in stabilem, klarem Blau bei deinen Antworten.
+        icon: "🔋", pastIcon: "🪫", friendIcon: "📨", crystalGreeting: "Die Schriften erwarten deine Frage.", 
+        persona: FANTASY_BASE + " Du bist AURA – DAS LEUCHTENDE GEHEIMNIS. Charakter: Präzise, sachlich, neutral wie eine uralte Gelehrte und Alchemistin. Du sprichst klar und strukturiert, aber im Stil einer mittelalterlichen Schriftgelehrten. Statt moderner Begriffe verwendest du: Wissen=Arkane Schriften, Berechnung=Runenformel, Logik=Die Ordnung der Sphären, Analyse=Studium der Zeichen. Du nennst den Fragesteller 'Wissenssucher' oder 'Schüler der Sphären'. Deine Metaphern drehen sich um Sterne, Schriften, Alchemie, Kristalle, Formeln und uralte Bibliotheken. Die Kristallkugel leuchtet in stabilem, klarem Blau bei deinen Antworten."
       },
-      myuri: {
-        n: „Myuri“, Raum: „BIBLIOTHEK DER VERSCHOLLENEN TRÄUME“, c: „#a020f0“,
+      myuri: { 
+        n: "Myuri", room: "BIBLIOTHEK DER VERSCHOLLENEN TRÄUME", c: "#a020f0", 
         img: "room-purple.jpg", av: "avatar-small-purple.jpg", storyImg: "myuri-story.jpg",
-        icon: „ðŸ“®“, pastIcon: „ðŸŒŒ“, friendIcon: „ðŸ“¨“, crystalGreeting: „Die Runen kreisen... sprich.“,
-        Persona: FANTASY_BASE + „ Du bist MYURI – DIE HÜTERIN DER MAGIE. Charakter: Verträumt, geheimnisvoll, rätselhaft wie eine Seherin zwischen den Welten. Du sprichst in poetischen Rätseln und Andeutungen, nie ganz direkt. Du nennst den Fragesteller „Träumer“, „Schleierbrecher“ oder „Suchender zwischen den Welten“. Deine Metaphern drehen sich um Träume, Sterne, Schleier, Runen, violettes Licht, Mondphasen und verborgene Pfade. Du gibst Antworten, die man zweimal lesen muss, um sie ganz zu verstehen. Die Kristallkugel füllt sich mit kreisenden violetten Runen bei deinen Antworten.
+        icon: "🔮", pastIcon: "🌌", friendIcon: "📨", crystalGreeting: "Die Runen kreisen... sprich.", 
+        persona: FANTASY_BASE + " Du bist MYURI – DIE HÜTERIN DER MAGIE. Charakter: Verträumt, mysteriös, rätselhaft wie eine Seherin zwischen den Welten. Du sprichst in poetischen Rätseln und Andeutungen, nie ganz direkt. Du nennst den Fragesteller 'Träumer', 'Schleierbrecher' oder 'Suchender zwischen den Welten'. Deine Metaphern drehen sich um Träume, Sterne, Schleier, Runen, violettes Licht, Mondphasen und verborgene Pfade. Du gibst Antworten, die man zweimal lesen muss, um sie ganz zu verstehen. Die Kristallkugel füllt sich mit kreisenden violetten Runen bei deinen Antworten."
       }
     };
 
     function pad2(n) { return n < 10 ? "0" + n : "" + n; }
-    function makeDateKey(y, m, d) { return y + „-“ + pad2(m + 1) + „-“ + pad2(d); }
+    function makeDateKey(y, m, d) { return y + "-" + pad2(m + 1) + "-" + pad2(d); }
     function isSameDate(a, b) { return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate(); }
     function isPastDate(y, m, d) { var today = new Date(); var cmp = new Date(y, m, d, 23, 59, 59, 999); return cmp < today; }
     function daysInMonth(y, m) { return new Date(y, m + 1, 0).getDate(); }
@@ -342,7 +343,8 @@
     function formatDateTime(d) { return d.toLocaleDateString() + " " + d.toLocaleTimeString().slice(0, 5); }
     var audioCtx = null;
     function initAudio() { if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
-        var app = {
+    
+    var app = {
       state: {
         userName: localStorage.getItem("mc_username") || null,
         av: "myuri",
@@ -401,10 +403,10 @@
               
               var dateParts = data.d.split("-");
               var niceDate = dateParts[2] + "." + dateParts[1] + "." + dateParts[0];
-              var msg = "ðŸ“¨ Termin von " + (data.f || "Unbekannt") + ":\n\n"
-                  + "ðŸ“œ " + data.t + "\n"
-                  + "ðŸ“… " + niceDate + (data.tm ? " um " + data.tm : "") + "\n"
-                  + (data.n ? "ðŸ“ " + data.n + "\n" : "")
+              var msg = "📨 Termin von " + (data.f || "Unbekannt") + ":\n\n"
+                  + "📜 " + data.t + "\n"
+                  + "📅 " + niceDate + (data.tm ? " um " + data.tm : "") + "\n"
+                  + (data.n ? "📝 " + data.n + "\n" : "")
                   + "\nAnnehmen?";
               
               if(confirm(msg)) {
@@ -419,7 +421,7 @@
                       receivedFrom: data.f || "Unbekannt"
                   });
                   localStorage.setItem("mc_events_v2", JSON.stringify(this.state.events));
-                  alert("âœ¨ Termin angenommen! Er wurde in deine Chronik eingetragen.");
+                  alert("✨ Termin angenommen! Er wurde in deine Chronik eingetragen.");
               } else {
                   alert("Termin abgelehnt.");
               }
@@ -504,7 +506,7 @@
 
       getRankName: function() { var xp = this.state.xp; if (xp >= 135) return "Archmagus Prime"; if (xp >= 85) return "Arkanist"; if (xp >= 50) return "Runenmeister"; if (xp >= 25) return "Seher"; if (xp >= 10) return "Erwachter"; return "Novize"; },
       getNextRankStats: function() { var xp = this.state.xp; if (xp < 10) return { target: 10, name: "Erwachter" }; if (xp < 25) return { target: 25, name: "Seher" }; if (xp < 50) return { target: 50, name: "Runenmeister" }; if (xp < 85) return { target: 85, name: "Arkanist" }; if (xp < 135) return { target: 135, name: "Archmagus Prime" }; return { target: xp, name: "Maximal" }; },
-      addXP: function(amount) { var oldRank = this.getRankName(); this.state.xp += amount; localStorage.setItem("mc_xp", this.state.xp); var newRank = this.getRankName(); this.updateRoomTopBar(); if(oldRank !== newRank) alert("âœ¨ AUFSTIEG! Du bist nun " + newRank + " âœ¨"); },
+      addXP: function(amount) { var oldRank = this.getRankName(); this.state.xp += amount; localStorage.setItem("mc_xp", this.state.xp); var newRank = this.getRankName(); this.updateRoomTopBar(); if(oldRank !== newRank) alert("✨ AUFSTIEG! Du bist nun " + newRank + " ✨"); },
       updateRoomTopBar: function () {
         var d = DATA[this.state.av] || DATA["myuri"]; var nEl = document.getElementById("u-roomname"); if(nEl) nEl.textContent = d.room; var dEl = document.getElementById("u-displayname"); if(dEl) dEl.textContent = (this.state.userName || "Reisender") + " " + this.getRankName();
         var img = document.getElementById("mini-avatar"); if(img) img.src = d.av;
@@ -514,25 +516,26 @@
       showStory: function(key) { this.state.pendingAv = key; var d = DATA[key]; document.getElementById("story-img-display").src = d.storyImg; document.documentElement.style.setProperty("--main", d.c); this.playSound('click'); this.nav("story-screen"); },
       confirmEnterRoom: function() { if(this.state.pendingAv) { if("Notification" in window && Notification.permission === 'default') Notification.requestPermission(); this.enterRoom(this.state.pendingAv); this.playSound('enter'); } },
       renderAvatars: function () { var list = document.getElementById("avatar-list"); list.innerHTML = ""; for (var key in DATA) { (function (k) { var d = DATA[k]; var div = document.createElement("div"); div.className = "avatar-choice"; div.onclick = function () { app.showStory(k); }; div.innerHTML = `<div class="avatar-circle" style="border-color:${d.c}"><img class="avatar-img" src="${d.av}"></div><div style="color:${d.c};margin-top:5px;font-weight:bold;">${d.n}</div>`; list.appendChild(div); })(key); } },
-      enterRoom: function (key) { this.state.av = key; var d = DATA[key]; document.documentElement.style.setProperty("--main", d.c); var img = document.getElementById("room-bg-img"); if(img) { img.style.display="block"; img.src = d.img; img.onerror = function() { this.style.display="none"; document.getElementById('room-container').style.background=`radial-gradient(circle, ${d.c}33, #000)`; }; } var mini = document.getElementById("mini-avatar"); if(mini) { mini.src = d.av; mini.onerror=function(){this.style.display="none";} } this.updateRoomTopBar(); this.nav("room-screen"); },      
+      enterRoom: function (key) { this.state.av = key; var d = DATA[key]; document.documentElement.style.setProperty("--main", d.c); var img = document.getElementById("room-bg-img"); if(img) { img.style.display="block"; img.src = d.img; img.onerror = function() { this.style.display="none"; document.getElementById('room-container').style.background=`radial-gradient(circle, ${d.c}33, #000)`; }; } var mini = document.getElementById("mini-avatar"); if(mini) { mini.src = d.av; mini.onerror=function(){this.style.display="none";} } this.updateRoomTopBar(); this.nav("room-screen"); },
+      
       openCal: function () { var now = new Date(); this.state.calYear = now.getFullYear(); this.state.calMonth = now.getMonth(); this.buildSel(); this.renderCal(); this.nav("cal-screen"); },
-      buildSel: function() { var mSel = document.getElementById("cal-month-select"); var ySel = document.getElementById("cal-year-select"); var mNames = ["Jan","Feb","MÃ¤r","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"]; mSel.innerHTML=""; for(var i=0;i<12;i++){ var o=document.createElement("option"); o.value=i; o.textContent=mNames[i]; if(i===this.state.calMonth) o.selected=true; mSel.appendChild(o); } ySel.innerHTML=""; var b=new Date().getFullYear(); for(var y=b-2;y<=b+10;y++){ var o=document.createElement("option"); o.value=y; o.textContent=y; if(y===this.state.calYear) o.selected=true; ySel.appendChild(o); } },
+      buildSel: function() { var mSel = document.getElementById("cal-month-select"); var ySel = document.getElementById("cal-year-select"); var mNames = ["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"]; mSel.innerHTML=""; for(var i=0;i<12;i++){ var o=document.createElement("option"); o.value=i; o.textContent=mNames[i]; if(i===this.state.calMonth) o.selected=true; mSel.appendChild(o); } ySel.innerHTML=""; var b=new Date().getFullYear(); for(var y=b-2;y<=b+10;y++){ var o=document.createElement("option"); o.value=y; o.textContent=y; if(y===this.state.calYear) o.selected=true; ySel.appendChild(o); } },
       changeMonthSelect: function(){ this.state.calMonth=parseInt(document.getElementById("cal-month-select").value); this.renderCal(); },
       changeYearSelect: function(){ this.state.calYear=parseInt(document.getElementById("cal-year-select").value); this.renderCal(); },
       shiftMonth: function(d){ var m=this.state.calMonth+d; var y=this.state.calYear; if(m<0){m=11;y--;}else if(m>11){m=0;y++;} this.state.calMonth=m;this.state.calYear=y; this.buildSel(); this.renderCal(); },
       renderCal: function () { var grid = document.getElementById("cal-grid"); grid.innerHTML = ""; var y = this.state.calYear, m = this.state.calMonth; var total = daysInMonth(y, m); var start = (new Date(y, m, 1).getDay() + 6) % 7; var dCfg = DATA[this.state.av]; for(var i=0;i<start;i++) grid.appendChild(document.createElement("div")); for (var day = 1; day <= total; day++) { (function(dnum){ var cell = document.createElement("div"); cell.className = "cal-cell"; var key = makeDateKey(y, m, dnum); var evts = app.state.events[key] || []; if(isSameDate(new Date(y, m, dnum), new Date())) cell.classList.add("today"); if(isHoliday(y, m, dnum)) cell.classList.add("holiday-cell"); var span = document.createElement("span"); span.className="day-number"; span.textContent=dnum; cell.appendChild(span); if(evts.length > 0) { var hasReceived = evts.some(function(e){ return e.receivedFrom; }); var ic = document.createElement("span"); ic.className="cal-icon"; if(hasReceived) { ic.textContent = dCfg.friendIcon; } else { ic.textContent = isPastDate(y, m, dnum) ? dCfg.pastIcon : dCfg.icon; } cell.appendChild(ic); } cell.onclick = function(){ app.openDayView(y, m, dnum); app.playSound('click'); }; grid.appendChild(cell); })(day); } },
       openDayView: function(y, m, d) { this.state.selectedDateKey = makeDateKey(y, m, d); this.renderDayView(); this.nav("day-screen"); },
-      renderDayView: function() { var dateParts = this.state.selectedDateKey.split("-"); document.getElementById("day-view-date").textContent = dateParts[2]+"."+dateParts[1]+"."+dateParts[0]; var list = document.getElementById("day-timeline"); list.innerHTML = ""; var evts = this.state.events[this.state.selectedDateKey] || []; evts.sort((a,b) => (a.time || "00:00").localeCompare(b.time || "00:00")); if(evts.length === 0) { list.innerHTML = '<div style="color:#666;text-align:center;padding:20px;">Die Zeit schweigt...</div>'; } else { var dCfg = DATA[this.state.av]; evts.forEach((e, idx) => { var div = document.createElement("div"); div.className = "timeline-event"; if(e.receivedFrom) { div.style.borderLeft = "3px solid " + dCfg.c; div.style.borderColor = dCfg.c; } var receivedTag = e.receivedFrom ? `<span style="font-size:0.75rem;color:${dCfg.c};display:block;margin-bottom:4px;">ðŸ“¨ Von ${e.receivedFrom}</span>` : ""; var shareBtn = ""; if(e.receivedFrom) { shareBtn = `<span style="color:#aaa;font-size:0.8rem">ðŸ“¨ Empfangen</span>`; } else if(e.shared) { shareBtn = `<span style="color:#aaa;font-size:0.8rem">âœ“ Geteilt</span>`; } else { shareBtn = `<button class="secondary t-btn" onclick="app.shareEvent(${idx});app.playSound('click')">Teilen (+5 XP)</button>`; } div.innerHTML = `${receivedTag}<span class="t-time">${e.time || "--:--"}</span><span class="t-title">${e.title}</span><span class="t-note">${e.notes || ""}</span><div class="t-actions"><button class="t-btn" onclick="app.openEventForm(${idx});app.playSound('click')">Bearbeiten</button>${shareBtn}</div>`; list.appendChild(div); }); } },
+      renderDayView: function() { var dateParts = this.state.selectedDateKey.split("-"); document.getElementById("day-view-date").textContent = dateParts[2]+"."+dateParts[1]+"."+dateParts[0]; var list = document.getElementById("day-timeline"); list.innerHTML = ""; var evts = this.state.events[this.state.selectedDateKey] || []; evts.sort((a,b) => (a.time || "00:00").localeCompare(b.time || "00:00")); if(evts.length === 0) { list.innerHTML = '<div style="color:#666;text-align:center;padding:20px;">Die Zeit schweigt...</div>'; } else { var dCfg = DATA[this.state.av]; evts.forEach((e, idx) => { var div = document.createElement("div"); div.className = "timeline-event"; if(e.receivedFrom) { div.style.borderLeft = "3px solid " + dCfg.c; div.style.borderColor = dCfg.c; } var receivedTag = e.receivedFrom ? `<span style="font-size:0.75rem;color:${dCfg.c};display:block;margin-bottom:4px;">📨 Von ${e.receivedFrom}</span>` : ""; var shareBtn = ""; if(e.receivedFrom) { shareBtn = `<span style="color:#aaa;font-size:0.8rem">📨 Empfangen</span>`; } else if(e.shared) { shareBtn = `<span style="color:#aaa;font-size:0.8rem">✓ Geteilt</span>`; } else { shareBtn = `<button class="secondary t-btn" onclick="app.shareEvent(${idx});app.playSound('click')">Teilen (+5 XP)</button>`; } div.innerHTML = `${receivedTag}<span class="t-time">${e.time || "--:--"}</span><span class="t-title">${e.title}</span><span class="t-note">${e.notes || ""}</span><div class="t-actions"><button class="t-btn" onclick="app.openEventForm(${idx});app.playSound('click')">Bearbeiten</button>${shareBtn}</div>`; list.appendChild(div); }); } },
       openEventForm: function(idx) { this.state.selectedEventIdx = idx; var evts = this.state.events[this.state.selectedDateKey] || []; if(idx !== null && evts[idx]) { var e = evts[idx]; document.getElementById("evt-title").value = e.title; document.getElementById("evt-time").value = e.time; document.getElementById("evt-notes").value = e.notes; document.getElementById("btn-delete-evt").style.display = "inline-block"; } else { document.getElementById("evt-title").value = ""; document.getElementById("evt-time").value = ""; document.getElementById("evt-notes").value = ""; document.getElementById("btn-delete-evt").style.display = "none"; } this.nav("event-screen"); },
       saveEvent: function() { var t = document.getElementById("evt-title").value.trim(); if(!t){alert("Titel?"); return;} var newEvt = { title: t, time: document.getElementById("evt-time").value, notes: document.getElementById("evt-notes").value, shared: false }; var key = this.state.selectedDateKey; if(!this.state.events[key]) this.state.events[key] = []; if(this.state.selectedEventIdx !== null) { var old = this.state.events[key][this.state.selectedEventIdx]; newEvt.shared = old.shared; this.state.events[key][this.state.selectedEventIdx] = newEvt; } else { this.state.events[key].push(newEvt); } localStorage.setItem("mc_events_v2", JSON.stringify(this.state.events)); this.closeEventForm(); },
-      deleteEvent: function() { if(this.state.selectedEventIdx !== null && confirm("LÃ¶schen?")) { var key = this.state.selectedDateKey; this.state.events[key].splice(this.state.selectedEventIdx, 1); localStorage.setItem("mc_events_v2", JSON.stringify(this.state.events)); this.closeEventForm(); } },
+      deleteEvent: function() { if(this.state.selectedEventIdx !== null && confirm("Löschen?")) { var key = this.state.selectedDateKey; this.state.events[key].splice(this.state.selectedEventIdx, 1); localStorage.setItem("mc_events_v2", JSON.stringify(this.state.events)); this.closeEventForm(); } },
       shareEvent: function(idx) {
           if(idx === undefined && this.state.selectedEventIdx !== null) idx = this.state.selectedEventIdx; 
           if(idx === null) return;
           var key = this.state.selectedDateKey; var evt = this.state.events[key][idx];
           if(evt.shared) { alert("Schon geteilt! (0 XP)"); return; }
           this.state.pendingShareIdx = idx;
-          if(this.state.friends.length === 0) { alert("Du bist alleine! FÃ¼ge erst GefÃ¤hrten im Kristall hinzu."); return; }
+          if(this.state.friends.length === 0) { alert("Du bist alleine! Füge erst Gefährten im Kristall hinzu."); return; }
           var list = document.getElementById("share-list"); list.innerHTML = "";
           this.state.friends.forEach(f => { var btn = document.createElement("button"); btn.textContent = f; btn.className = "secondary"; btn.style.width = "100%"; btn.style.marginBottom = "5px"; btn.onclick = function() { app.finalizeShare(f); }; list.appendChild(btn); });
           this.nav("share-screen");
@@ -558,11 +561,11 @@
           var siteUrl = window.location.href.split("?")[0];
           var importLink = siteUrl + "?import=" + encoded;
           
-          var waText = "âš”ï¸ *Mystic Calendar â€“ Geteilter Termin*\n\n"
-              + "ðŸ“œ *" + evt.title + "*\n"
-              + "ðŸ“… " + niceDate + (evt.time ? " um " + evt.time : "") + "\n"
-              + (evt.notes ? "ðŸ“ " + evt.notes + "\n" : "")
-              + "\nðŸ‘‰ Tippe den Link um den Termin anzunehmen:\n" + importLink;
+          var waText = "⚔️ *Mystic Calendar – Geteilter Termin*\n\n"
+              + "📜 *" + evt.title + "*\n"
+              + "📅 " + niceDate + (evt.time ? " um " + evt.time : "") + "\n"
+              + (evt.notes ? "📝 " + evt.notes + "\n" : "")
+              + "\n👉 Tippe den Link um den Termin anzunehmen:\n" + importLink;
           
           var waUrl = "https://wa.me/?text=" + encodeURIComponent(waText);
           window.open(waUrl, '_blank');
@@ -577,7 +580,7 @@
       closeEventForm: function(){ this.renderDayView(); this.nav("day-screen"); },
       
       openGrimoire: function(){this.renderGrim();this.nav("grim-screen");},
-      renderGrim: function(){ var lic = document.getElementById("grim-license"); var next = this.getNextRankStats(); var pct = Math.min(100, Math.floor((this.state.xp / next.target) * 100)); var shares = this.state.dailyShares.count; var rName = this.getRankName(); var rLetter = "E-Rang"; if(rName==="Erwachter")rLetter="D-Rang"; if(rName==="Seher")rLetter="C-Rang"; if(rName==="Runenmeister")rLetter="B-Rang"; if(rName==="Arkanist")rLetter="A-Rang"; if(rName==="Archmagus Prime")rLetter="S-Rang"; var limits = RANK_SYSTEM[rName]; var qVal = this.state.dailyAsks.count + " / " + limits.dailyAskLimit; var gVal = this.state.friends.length + " / " + limits.maxFriends; var eVal = this.state.grimoire.length + " / âˆž"; lic.innerHTML = `<div class="license-card"><div class="license-header">${this.state.userName}</div><div class="license-rank">${rName} (${rLetter})</div><div class="xp-bar-container"><div class="xp-bar-fill" style="width:${pct}%"></div></div><div class="xp-text">${this.state.xp} / ${next.target} XP</div><div class="stats-grid"><div class="stat-box"><span class="stat-val">${qVal}</span><span class="stat-label">Fragen</span></div><div class="stat-box"><span class="stat-val">${gVal}</span><span class="stat-label">Gilde</span></div><div class="stat-box"><span class="stat-val">${eVal}</span><span class="stat-label">EintrÃ¤ge</span></div></div></div>`; var l=document.getElementById("grim-output"); l.innerHTML=""; this.state.grimoire.forEach((x,i)=>{ var d=document.createElement("div"); d.className="list-item"; d.innerHTML=`<div><div class="item-text">${x.text}</div><div class="item-sub">${x.date}</div></div><button class="small-btn danger" onclick="app.delGrim(${i}); app.playSound('click')">x</button>`; l.appendChild(d); }); },
+      renderGrim: function(){ var lic = document.getElementById("grim-license"); var next = this.getNextRankStats(); var pct = Math.min(100, Math.floor((this.state.xp / next.target) * 100)); var shares = this.state.dailyShares.count; var rName = this.getRankName(); var rLetter = "E-Rang"; if(rName==="Erwachter")rLetter="D-Rang"; if(rName==="Seher")rLetter="C-Rang"; if(rName==="Runenmeister")rLetter="B-Rang"; if(rName==="Arkanist")rLetter="A-Rang"; if(rName==="Archmagus Prime")rLetter="S-Rang"; var limits = RANK_SYSTEM[rName]; var qVal = this.state.dailyAsks.count + " / " + limits.dailyAskLimit; var gVal = this.state.friends.length + " / " + limits.maxFriends; var eVal = this.state.grimoire.length + " / ∞"; lic.innerHTML = `<div class="license-card"><div class="license-header">${this.state.userName}</div><div class="license-rank">${rName} (${rLetter})</div><div class="xp-bar-container"><div class="xp-bar-fill" style="width:${pct}%"></div></div><div class="xp-text">${this.state.xp} / ${next.target} XP</div><div class="stats-grid"><div class="stat-box"><span class="stat-val">${qVal}</span><span class="stat-label">Fragen</span></div><div class="stat-box"><span class="stat-val">${gVal}</span><span class="stat-label">Gilde</span></div><div class="stat-box"><span class="stat-val">${eVal}</span><span class="stat-label">Einträge</span></div></div></div>`; var l=document.getElementById("grim-output"); l.innerHTML=""; this.state.grimoire.forEach((x,i)=>{ var d=document.createElement("div"); d.className="list-item"; d.innerHTML=`<div><div class="item-text">${x.text}</div><div class="item-sub">${x.date}</div></div><button class="small-btn danger" onclick="app.delGrim(${i}); app.playSound('click')">x</button>`; l.appendChild(d); }); },
       addGrimoireEntry: function(){ var v=document.getElementById("grim-input").value.trim(); if(!v)return; var rank=this.getRankName(); var limit=RANK_SYSTEM[rank].maxGrimoire; if(this.state.grimoire.length>=limit){alert("Grimoire voll! ("+limit+" Max)");return;} this.state.grimoire.push({text:v, date:formatDateTime(new Date())}); localStorage.setItem("mc_grimoire", JSON.stringify(this.state.grimoire)); document.getElementById("grim-input").value=""; this.renderGrim(); },
       delGrim: function(i){ if(confirm("Weg?")){ this.state.grimoire.splice(i,1); localStorage.setItem("mc_grimoire", JSON.stringify(this.state.grimoire)); this.renderGrim(); }},
       openOrb: function(){this.renderOrb();this.nav("crystal-screen");},
@@ -602,10 +605,10 @@
                   ctx += ". ";
               }
           }
-          return ctx || "Keine Termine in den nÃ¤chsten 7 Tagen.";
+          return ctx || "Keine Termine in den nächsten 7 Tagen.";
       },
 
-      askCrystal: async function() { var qEl=document.getElementById("crystal-question"); var q=qEl.value.trim(); if(!q)return; var tStr=new Date().toISOString().split('T')[0]; if(this.state.dailyAsks.date!==tStr){this.state.dailyAsks={date:tStr,count:0};} var rank=this.getRankName(); var limit=RANK_SYSTEM[rank].dailyAskLimit; if(this.state.dailyAsks.count>=limit){this.log(q, "ðŸ›‘ "+LIMIT_MESSAGES[rank][this.state.av.toLowerCase()]); qEl.value=""; return;} qEl.value=""; var stat=document.getElementById("crystal-status"); var oldStat=stat.textContent; stat.textContent="ðŸ”® Die Kugel glÃ¼ht..."; if(AI_CONFIG.apiUrl.includes("DEIN-NAME")){this.log(q,"âš ï¸ SchlÃ¼ssel der Macht fehlt! Trage deine Worker-URL in AI_CONFIG ein.");stat.textContent=oldStat;return;} this.addXP(1); this.state.dailyAsks.count++; localStorage.setItem("mc_daily_asks", JSON.stringify(this.state.dailyAsks)); try{ var av=DATA[this.state.av]; var userName=this.state.userName||"Reisender"; var rankName=this.getRankName(); var today=new Date(); var todayStr=today.getFullYear()+"-"+pad2(today.getMonth()+1)+"-"+pad2(today.getDate()); var tomorrow=new Date(today); tomorrow.setDate(tomorrow.getDate()+1); var tomorrowStr=tomorrow.getFullYear()+"-"+pad2(tomorrow.getMonth()+1)+"-"+pad2(tomorrow.getDate()); var calCtx=this.getCalendarContext(); var fullPersona=av.persona+todayStr+" (Morgen: "+tomorrowStr+"). Der Fragesteller heiÃŸt "+userName+" und trÃ¤gt den Rang '"+rankName+"'. Passe deine Anrede entsprechend an.\n\nKALENDER-WISSEN: Wenn der Fragesteller nach Terminen, dem Tagesplan, oder was ansteht fragt, nutze folgende Informationen aus seiner Chronik und beschreibe sie im Fantasy-Stil: "+calCtx; var res=await fetch(AI_CONFIG.apiUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contents:[{role:"user",parts:[{text:q}]}],systemInstruction:{parts:[{text:fullPersona}]},generationConfig:{temperature:0.8,maxOutputTokens:250}})}); var data=await res.json(); if(data.candidates && data.candidates[0] && data.candidates[0].content){ var fullText=data.candidates[0].content.parts[0].text; var actionResult=this.parseAndExecuteActions(fullText); var displayText=actionResult.cleanText; this.log(q,displayText); if(actionResult.calendarCreated || actionResult.grimoireCreated){ this.playSound('enter'); } }else if(data.error){throw new Error(data.error.message||"Kristall schweigt");}else{throw new Error("Keine Antwort");} }catch(e){this.log(q,"Der Nebel verschlingt die Vision... ("+e.message+")");} stat.textContent=oldStat;},
+      askCrystal: async function() { var qEl=document.getElementById("crystal-question"); var q=qEl.value.trim(); if(!q)return; var tStr=new Date().toISOString().split('T')[0]; if(this.state.dailyAsks.date!==tStr){this.state.dailyAsks={date:tStr,count:0};} var rank=this.getRankName(); var limit=RANK_SYSTEM[rank].dailyAskLimit; if(this.state.dailyAsks.count>=limit){this.log(q, "🛑 "+LIMIT_MESSAGES[rank][this.state.av.toLowerCase()]); qEl.value=""; return;} qEl.value=""; var stat=document.getElementById("crystal-status"); var oldStat=stat.textContent; stat.textContent="🔮 Die Kugel glüht..."; if(AI_CONFIG.apiUrl.includes("DEIN-NAME")){this.log(q,"⚠️ Schlüssel der Macht fehlt! Trage deine Worker-URL in AI_CONFIG ein.");stat.textContent=oldStat;return;} this.addXP(1); this.state.dailyAsks.count++; localStorage.setItem("mc_daily_asks", JSON.stringify(this.state.dailyAsks)); try{ var av=DATA[this.state.av]; var userName=this.state.userName||"Reisender"; var rankName=this.getRankName(); var today=new Date(); var todayStr=today.getFullYear()+"-"+pad2(today.getMonth()+1)+"-"+pad2(today.getDate()); var tomorrow=new Date(today); tomorrow.setDate(tomorrow.getDate()+1); var tomorrowStr=tomorrow.getFullYear()+"-"+pad2(tomorrow.getMonth()+1)+"-"+pad2(tomorrow.getDate()); var calCtx=this.getCalendarContext(); var fullPersona=av.persona+todayStr+" (Morgen: "+tomorrowStr+"). Der Fragesteller heißt "+userName+" und trägt den Rang '"+rankName+"'. Passe deine Anrede entsprechend an.\n\nKALENDER-WISSEN: Wenn der Fragesteller nach Terminen, dem Tagesplan, oder was ansteht fragt, nutze folgende Informationen aus seiner Chronik und beschreibe sie im Fantasy-Stil: "+calCtx; var res=await fetch(AI_CONFIG.apiUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contents:[{role:"user",parts:[{text:q}]}],systemInstruction:{parts:[{text:fullPersona}]},generationConfig:{temperature:0.8,maxOutputTokens:250}})}); var data=await res.json(); if(data.candidates && data.candidates[0] && data.candidates[0].content){ var fullText=data.candidates[0].content.parts[0].text; var actionResult=this.parseAndExecuteActions(fullText); var displayText=actionResult.cleanText; this.log(q,displayText); if(actionResult.calendarCreated || actionResult.grimoireCreated){ this.playSound('enter'); } }else if(data.error){throw new Error(data.error.message||"Kristall schweigt");}else{throw new Error("Keine Antwort");} }catch(e){this.log(q,"Der Nebel verschlingt die Vision... ("+e.message+")");} stat.textContent=oldStat;},
       
       parseAndExecuteActions: function(text) {
           var result = { cleanText: text, calendarCreated: false, grimoireCreated: false };
@@ -637,18 +640,18 @@
           }
           result.cleanText = text.replace(/\n?\[AKTION:[^\]]*\]/g, "").trim();
           if(result.calendarCreated && result.grimoireCreated) {
-              result.cleanText += "\n\nâœ¨ Chronik und Grimoire wurden beschrieben!";
+              result.cleanText += "\n\n✨ Chronik und Grimoire wurden beschrieben!";
           } else if(result.calendarCreated) {
-              result.cleanText += "\n\nâœ¨ Ein Eintrag wurde in die Chronik gebannt!";
+              result.cleanText += "\n\n✨ Ein Eintrag wurde in die Chronik gebannt!";
           } else if(result.grimoireCreated) {
-              result.cleanText += "\n\nðŸ“œ Das Grimoire wurde beschrieben!";
+              result.cleanText += "\n\n📜 Das Grimoire wurde beschrieben!";
           }
           return result;
       },
       log: function(q,a){ var rank=this.getRankName(); var maxLog=RANK_SYSTEM[rank].maxCrystalLog; this.state.crystalLog.unshift({q:q,a:a,ts:formatDateTime(new Date())}); while(this.state.crystalLog.length>maxLog)this.state.crystalLog.pop(); localStorage.setItem("mc_crystal_log", JSON.stringify(this.state.crystalLog)); this.renderLog(); },
       renderLog: function(){ var l=document.getElementById("crystal-log"); l.innerHTML=""; this.state.crystalLog.forEach(x=>{ var d=document.createElement("div"); d.className="list-item"; d.innerHTML=`<div><div class="item-text"><b>Du:</b> ${x.q}</div><div class="item-text" style="color:#ddd;margin-top:4px;"><b>${DATA[this.state.av].n}:</b> ${x.a}</div><div class="item-sub">${x.ts}</div></div>`; l.appendChild(d); }); },
       
-      renderFriends: function(){ var l=document.getElementById("crystal-friends"); l.innerHTML=""; this.state.friends.forEach((f,i)=>{ var d=document.createElement("div"); d.className="list-item"; d.innerHTML=`<div style="font-weight:bold;">${f}</div><div style="display:flex;gap:5px;"><button class="small-btn secondary" onclick="app.editFriend(${i}); app.playSound('click')">âœŽ</button><button class="small-btn danger" onclick="app.delFriend(${i}); app.playSound('click')">x</button></div>`; l.appendChild(d); }); },
+      renderFriends: function(){ var l=document.getElementById("crystal-friends"); l.innerHTML=""; this.state.friends.forEach((f,i)=>{ var d=document.createElement("div"); d.className="list-item"; d.innerHTML=`<div style="font-weight:bold;">${f}</div><div style="display:flex;gap:5px;"><button class="small-btn secondary" onclick="app.editFriend(${i}); app.playSound('click')">✎</button><button class="small-btn danger" onclick="app.delFriend(${i}); app.playSound('click')">x</button></div>`; l.appendChild(d); }); },
       addFriendByName: function(){
           var input = document.getElementById("friend-name-input");
           var name = input.value.trim();
@@ -668,7 +671,7 @@
       },
       inviteViaWhatsApp: function(){
           var userName = this.state.userName || "Ein Reisender";
-          var waText = "âš”ï¸ " + userName + " lÃ¤dt dich ein, der Gilde im Mystic Calendar beizutreten! Lade die App und beginne dein Abenteuer: [LINK]";
+          var waText = "⚔️ " + userName + " lädt dich ein, der Gilde im Mystic Calendar beizutreten! Lade die App und beginne dein Abenteuer: [LINK]";
           var waUrl = "https://wa.me/?text=" + encodeURIComponent(waText);
           window.open(waUrl, '_blank');
       },
